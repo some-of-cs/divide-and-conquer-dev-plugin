@@ -56,7 +56,7 @@ Single-agent coding workflows break down on large specifications: context window
 > ### High Code Quality vs. High Token Consumption (Designed for the Gemini Flash Family)
 > - **Extreme Output Quality**: By running $K$ parallel Unit Implementers, multiple concurrent Code Reviewing Councils (`security-audit` + `cyclomatic-complexity`), and automated `patch-implementer` remediation loops across every tier, this plugin produces **exceptionally high-quality, zero-warning, production-grade code and products**.
 > - **High Token Consumption Trade-Off**: Because every unit, patch, story, and module undergoes full independent multi-agent implementation and multi-council verification, **this workflow consumes a large volume of tokens**.
-> - **Primary Target — Gemini Flash Family**: This plugin is **mainly developed, tuned, and recommended for the Gemini Flash family** (such as `gemini-2.5-flash` and `gemini-3-flash`), which delivers the high speed, large context window, and token cost-efficiency required for parallel multi-agent swarms.
+> - **Primary Target — Gemini Flash Family**: This plugin is **mainly developed, tuned, and recommended for the Gemini Flash family** (such as `gemini-3.5-flash` and `gemini-3.8-flash`), which delivers the high speed, large context window, and token cost-efficiency required for parallel multi-agent swarms.
 > - **Single-Profile Operation with `quota-sentinel`**: This plugin operates on **one profile at a time**. A dedicated autonomous **`quota-sentinel`** monitors token velocity and rate limits (`429` / `1%` remaining capacity), automatically flushing state to `.agents/checkpoints/<module-id>/checkpoint.json`, pausing active agents, and scheduling an automatic wakeup timer until your quota resets.
 
 ---
