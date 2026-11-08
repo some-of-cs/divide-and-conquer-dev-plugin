@@ -251,7 +251,7 @@ This repository is structured as a **Universal Tri-Platform Plugin (`some-divide
 
 ### Option A: Google Antigravity Marketplace / CLI (`agy`)
 
-1. **Native Antigravity Plugin Manifests**: [`plugin.json`](plugin.json), [`.antigravity-plugin/plugin.json`](.antigravity-plugin/plugin.json), and [`.gemini-plugin/plugin.json`](.gemini-plugin/plugin.json).
+1. **Native Antigravity Plugin Manifest**: [`plugin.json`](plugin.json) (with [`hooks.json`](hooks.json) and [`rules/AGENTS.md`](rules/AGENTS.md)).
 2. **Install into any workspace**:
    ```bash
    git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
@@ -269,7 +269,7 @@ This repository is structured as a **Universal Tri-Platform Plugin (`some-divide
    /plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
    /plugin install some-divide-and-conquer@some-divide-and-conquer-marketplace
    ```
-3. **Included Claude Code Slash Commands ([`commands/`](commands/))**:
+3. **Included Claude Code Slash Commands ([`.claude-plugin/commands/`](.claude-plugin/commands/))**:
    - `/divide-and-conquer <spec-or-module>` — Execute the full Divide-and-Conquer workflow
    - `/decompose-spec <spec-path>` — Decompose a monolithic doc into Modules, Stories, and Dynamic $K$ Units
    - `/council-review <pr-number>` — Run an independent Code Reviewing Council audit on a PR
@@ -278,7 +278,7 @@ This repository is structured as a **Universal Tri-Platform Plugin (`some-divide
 
 ### Option C: OpenAI Codex CLI (`codex`)
 
-1. **Native Codex Manifests**: [`codex.json`](codex.json), [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and root [`AGENTS.md`](AGENTS.md).
+1. **Native Codex Manifests**: [`codex.json`](codex.json), [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and [`rules/AGENTS.md`](rules/AGENTS.md).
 2. **Install into any Codex workspace**:
    ```bash
    ./some-divide-and-conquer/scripts/install-plugin.sh \
@@ -346,17 +346,14 @@ Explore the example artifacts:
 ```text
 some-divide-and-conquer/
 ├── plugin.json                                     # Google Antigravity Marketplace Manifest
-├── .antigravity-plugin/plugin.json                 # Antigravity loader manifest
-├── .gemini-plugin/plugin.json                      # Gemini CLI plugin manifest
 ├── .claude-plugin/
 │   ├── plugin.json                                 # Claude Code Plugin Manifest
-│   └── marketplace.json                            # Claude Code Marketplace Catalog Manifest
+│   ├── marketplace.json                            # Claude Code Marketplace Catalog Manifest
+│   ├── hooks.json                                  # Claude Code SessionStart hook (git & gh check)
+│   └── commands/                                   # Slash commands (/divide-and-conquer, /decompose-spec, etc.)
 ├── .codex-plugin/plugin.json                       # OpenAI Codex Plugin Manifest
 ├── codex.json                                      # OpenAI Codex CLI root configuration
-├── AGENTS.md                                       # Root instructions (Antigravity & OpenAI Codex)
-├── CLAUDE.md                                       # Root instructions (Claude Code)
 ├── hooks.json                                      # Antigravity SessionStart hook (git & gh check)
-├── hooks/hooks.json                                # Claude Code SessionStart hook (git & gh check)
 ├── assets/
 │   ├── logo.svg                                    # Primary plugin logo SVG
 │   ├── plugin-logo.svg                             # some-divide-and-conquer plugin emblem SVG
@@ -364,7 +361,6 @@ some-divide-and-conquer/
 │   └── some-of-cs-logo.svg                         # Official Some(CS) organization logo SVG
 ├── profiles/
 │   └── fields.json                                 # Field-targeting registry (--field software|product|marketing|finance|research|healthcare|game-dev|gis)
-├── commands/                                       # Slash commands (/divide-and-conquer, /decompose-spec, etc.)
 ├── rules/
 │   ├── AGENTS.md                                   # Consolidated workspace governance rules (<24 KB)
 │   └── references/                                 # Deep-dive reference guides (Rules 01..06)

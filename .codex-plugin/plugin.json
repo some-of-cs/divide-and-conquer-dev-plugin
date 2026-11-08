@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "hooks": "./hooks/hooks.json",
+  "hooks": "./.claude-plugin/hooks.json",
   "skills": "./skills",
   "agents": "./agents",
-  "instructions": "./AGENTS.md",
+  "instructions": "./rules/AGENTS.md",
   "interface": {
     "displayName": "Some Divide-and-Conquer",
     "shortDescription": "Decompose monolithic specs into parallel Git worktree units with multi-council review and 283 specialist agents.",

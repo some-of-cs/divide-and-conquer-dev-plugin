@@ -19,9 +19,8 @@ jobs:
       - name: Validate all JSON files
         run: |
           EXIT_CODE=0
-          for f in plugin.json codex.json hooks.json hooks/hooks.json \
+          for f in plugin.json codex.json hooks.json .claude-plugin/hooks.json \
                    .claude-plugin/plugin.json .claude-plugin/marketplace.json \
-                   .antigravity-plugin/plugin.json .gemini-plugin/plugin.json \
                    .codex-plugin/plugin.json .agents/plugins/marketplace.json \
                    profiles/fields.json \
                    agents/agency-catalog/divisions.json \

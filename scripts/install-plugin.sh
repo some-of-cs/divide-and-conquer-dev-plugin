@@ -132,7 +132,7 @@ if [[ -f "$FIELDS_JSON" ]]; then
   cp "$FIELDS_JSON" "$TARGET_DIR/.agents/profiles/fields.json"
   cp "$FIELDS_JSON" "$TARGET_DIR/profiles/fields.json"
 fi
-mkdir -p "$TARGET_DIR/hooks" && cp "$PLUGIN_ROOT/hooks/hooks.json" "$TARGET_DIR/hooks/hooks.json" 2>/dev/null || true
+mkdir -p "$TARGET_DIR/.claude" && cp "$PLUGIN_ROOT/.claude-plugin/hooks.json" "$TARGET_DIR/.claude/hooks.json" 2>/dev/null || true
 chmod +x "$TARGET_DIR/scripts/"*.sh
 
 # Write active field profile into $TARGET_DIR/.agents/field-profile.json
@@ -168,10 +168,11 @@ if [[ "$TOOL_PLATFORM" == "claude" || "$TOOL_PLATFORM" == "all" ]]; then
            "$TARGET_DIR/.claude/agents" \
            "$TARGET_DIR/.claude/commands" \
            "$TARGET_DIR/.claude/assets"
-  cp "$PLUGIN_ROOT/CLAUDE.md" "$TARGET_DIR/CLAUDE.md"
+  cp "$PLUGIN_ROOT/rules/AGENTS.md" "$TARGET_DIR/CLAUDE.md"
+  cp "$PLUGIN_ROOT/.claude-plugin/hooks.json" "$TARGET_DIR/.claude/hooks.json"
   cp -r "$TARGET_DIR/.agents/skills/"* "$TARGET_DIR/.claude/skills/"
   cp -r "$TARGET_DIR/.agents/agents/"* "$TARGET_DIR/.claude/agents/"
-  cp -r "$PLUGIN_ROOT/commands/"* "$TARGET_DIR/.claude/commands/"
+  cp -r "$PLUGIN_ROOT/.claude-plugin/commands/"* "$TARGET_DIR/.claude/commands/"
   if [[ -d "$PLUGIN_ROOT/assets" ]]; then
     cp -r "$PLUGIN_ROOT/assets/"* "$TARGET_DIR/.claude/assets/"
   fi

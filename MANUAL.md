@@ -252,7 +252,7 @@ your-project/
 **Codex Configuration** (`codex.json` in plugin root):
 ```json
 {
-  "instructions": "./AGENTS.md",
+  "instructions": "./rules/AGENTS.md",
   "skills_dir": "./skills",
   "agents_dir": "./agents",
   "preflight_command": "./scripts/preflight-check.sh --quiet"
@@ -838,10 +838,10 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 
 | Feature | Status | Notes |
 | :--- | :--- | :--- |
-| Plugin manifest | ✅ | `plugin.json` + `.antigravity-plugin/plugin.json` + `.gemini-plugin/plugin.json` |
+| Plugin manifest | ✅ | `plugin.json` |
 | Session hook | ✅ | `hooks.json` (auto-runs preflight on session start) |
 | Skills | ✅ | Auto-discovered from `skills/` directory |
-| Rules | ✅ | `AGENTS.md` loaded as workspace agent rules |
+| Rules | ✅ | `rules/AGENTS.md` loaded as workspace agent rules |
 | Subagent spawning | ✅ | `invoke_subagent` + `define_subagent` |
 | Watchdog schedules | ✅ | `schedule` tool with cron expressions |
 | Slash commands | ❌ | Use Antigravity's native `/plan`, `/goal`, `/teamwork` instead |
@@ -854,10 +854,10 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 | Feature | Status | Notes |
 | :--- | :--- | :--- |
 | Plugin manifest | ✅ | `.claude-plugin/plugin.json` + `marketplace.json` |
-| Session hook | ✅ | `hooks/hooks.json` (uses `CLAUDE_PLUGIN_ROOT` env var) |
+| Session hook | ✅ | `.claude-plugin/hooks.json` (uses `CLAUDE_PLUGIN_ROOT` env var) |
 | Skills | ✅ | Referenced from `.claude-plugin/plugin.json` |
-| Rules | ✅ | `CLAUDE.md` loaded automatically |
-| Slash commands | ✅ | 5 commands in `commands/` directory |
+| Rules | ✅ | `rules/AGENTS.md` (installed as `CLAUDE.md`) loaded automatically |
+| Slash commands | ✅ | 5 commands in `.claude-plugin/commands/` directory |
 | Agent definitions | ✅ | 7 agents in `.claude-plugin/plugin.json` `agents` array |
 | Marketplace | ✅ | `marketplace.json` catalog entry ready |
 
@@ -867,7 +867,7 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 | :--- | :--- | :--- |
 | Plugin manifest | ✅ | `codex.json` + `.codex-plugin/plugin.json` |
 | Preflight command | ✅ | `preflight_command` in `codex.json` |
-| Instructions | ✅ | `AGENTS.md` via `instructions` field |
+| Instructions | ✅ | `rules/AGENTS.md` via `instructions` field |
 | Skills | ✅ | `skills_dir` in `codex.json` |
 | Agents | ✅ | `agents_dir` in `codex.json` |
 | Slash commands | ❌ | Prompt the agent directly |
