@@ -1,21 +1,36 @@
 {
   "name": "divide-and-conquer-dev-plugin",
   "version": "1.1.0",
-  "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for OpenAI Codex CLI, Google Antigravity, and Claude Code. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees.",
+  "description": "Autonomous Divide-and-Conquer multi-agent engineering & domain delivery plugin for OpenAI Codex CLI, Google Antigravity, and Claude Code. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees across 8 industry --field presets.",
+  "license": "Apache-2.0",
+  "keywords": [
+    "codex-plugin",
+    "divide-and-conquer",
+    "multi-agent",
+    "git-worktrees",
+    "code-review-council",
+    "patch-implementer",
+    "github-projects",
+    "agency-agents",
+    "security-audit",
+    "cyclomatic-complexity"
+  ],
   "author": {
     "name": "some-of-cs",
     "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
   },
+  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "license": "Apache-2.0",
-  "requirements": {
-    "cli": [
-      "git",
-      "gh"
-    ]
-  },
-  "instructions": "../AGENTS.md",
-  "skills": "../skills",
-  "agents": "../agents",
-  "scripts": "../scripts"
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills",
+  "agents": "./agents",
+  "instructions": "./AGENTS.md",
+  "interface": {
+    "displayName": "Divide-and-Conquer Multi-Agent Engineering",
+    "shortDescription": "Decompose monolithic specs into parallel Git worktree units with multi-council review and 283 specialist agents.",
+    "longDescription": "Transforms monolithic specifications into bounded Modules, User Stories, and dynamically sized non-blocking Implementation Units in isolated Git worktrees, governed by multi-council code review, mandatory patch-implementer remediation loops, GitHub Projects Kanban tracking, and 8 industry --field presets.",
+    "category": "Development Workflows",
+    "websiteURL": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+    "developerName": "some-of-cs"
+  }
 }

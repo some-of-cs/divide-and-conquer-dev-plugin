@@ -40,5 +40,6 @@
     "./agents/quota-sentinel.md"
   ],
   "skills": "./skills",
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "displayName": "Divide-and-Conquer Multi-Agent Engineering"
 }

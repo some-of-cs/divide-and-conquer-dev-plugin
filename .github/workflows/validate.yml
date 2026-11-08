@@ -22,7 +22,7 @@ jobs:
           for f in plugin.json codex.json hooks.json hooks/hooks.json \
                    .claude-plugin/plugin.json .claude-plugin/marketplace.json \
                    .antigravity-plugin/plugin.json .gemini-plugin/plugin.json \
-                   .codex-plugin/plugin.json \
+                   .codex-plugin/plugin.json .agents/plugins/marketplace.json \
                    profiles/fields.json \
                    agents/agency-catalog/divisions.json \
                    examples/some-stripe/sample-checkpoint.json; do
