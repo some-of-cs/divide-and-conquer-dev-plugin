@@ -2,10 +2,12 @@
 
 <div align="center">
 
-> **Autonomous Divide-and-Conquer Software Engineering Plugin for the Google Antigravity Marketplace.**  
-> Transform monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees • Multi-Council Code Review • Mandatory `patch-implementer` Self-Correction • GitHub Projects Kanban • 283+ Pluggable Specialist Agents from `msitarzewski/agency-agents`
+> **Autonomous Divide-and-Conquer Software Engineering Plugin for Google Antigravity, Claude Code & OpenAI Codex.**  
+> Transform monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees • Multi-Council Code Review • Mandatory `patch-implementer` Self-Correction • GitHub Projects Kanban • Full `cloudflare/security-audit-skill` • 283+ Pluggable Specialist Agents from `msitarzewski/agency-agents`
 
 [![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Marketplace%20Plugin-4285F4.svg)](plugin.json)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Marketplace%20Plugin-D97757.svg)](.claude-plugin/marketplace.json)
+[![OpenAI Codex Plugin](https://img.shields.io/badge/OpenAI%20Codex-CLI%20%26%20Skills-10A37F.svg)](codex.json)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](plugin.json)
 [![Model Family](https://img.shields.io/badge/Optimized%20For-Gemini%20Flash%20Family-8E75B2.svg)](#token-consumption--gemini-flash-family-optimization)
 [![Agency Agents](https://img.shields.io/badge/Agency%20Agents-283%20Bundled%20(18%20Divisions)-22C55E.svg)](https://github.com/msitarzewski/agency-agents)
@@ -212,22 +214,58 @@ Browse and enable the exact agents your project needs:
 
 ---
 
-## Installation & Quick Start
+## Installation & Quick Start (Antigravity, Claude Code & OpenAI Codex)
 
-### 1. Install the Plugin into Your Project
+This repository is structured as a **Universal Tri-Platform Plugin** ready for direct publishing and installation across **Google Antigravity**, **Claude Code**, and **OpenAI Codex CLI**.
+
+### Option A: Google Antigravity Marketplace / CLI (`agy`)
+
+1. **Native Antigravity Plugin Manifests**: [`plugin.json`](plugin.json), [`.antigravity-plugin/plugin.json`](.antigravity-plugin/plugin.json), and [`.gemini-plugin/plugin.json`](.gemini-plugin/plugin.json).
+2. **Install into any workspace**:
+   ```bash
+   git clone https://github.com/some-of-cs/divide-and-conqure-dev-plugin.git
+   ./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+     --tool antigravity \
+     --target /path/to/your/project \
+     --divisions engineering,security,testing
+   ```
+
+### Option B: Claude Code Plugin Marketplace (`/plugin`)
+
+1. **Native Claude Code Manifests**: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
+2. **Install directly from the Claude Code Marketplace**:
+   ```text
+   /plugin marketplace add some-of-cs/divide-and-conqure-dev-plugin
+   /plugin install divide-and-conqure-dev-plugin@divide-and-conqure-dev-marketplace
+   ```
+3. **Included Claude Code Slash Commands ([`commands/`](commands/))**:
+   - `/divide-and-conquer <spec-or-module>` — Execute the full Divide-and-Conquer workflow
+   - `/decompose-spec <spec-path>` — Decompose a monolithic doc into Modules, Stories, and Dynamic $K$ Units
+   - `/council-review <pr-number>` — Run an independent Code Reviewing Council audit on a PR
+   - `/select-agents <options>` — Enable specialist agents from `msitarzewski/agency-agents`
+   - `/kanban-sync <init|status>` — Sync GitHub Projects Kanban & `checkpoint.json`
+
+### Option C: OpenAI Codex CLI (`codex`)
+
+1. **Native Codex Manifests**: [`codex.json`](codex.json), [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and root [`AGENTS.md`](AGENTS.md).
+2. **Install into any Codex workspace**:
+   ```bash
+   ./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+     --tool codex \
+     --target /path/to/your/project \
+     --divisions engineering,security,testing
+   ```
+
+### Option D: Install for All Platforms Simultaneously (`--tool all`)
 
 ```bash
-# Clone the plugin
-git clone https://github.com/some-of-cs/divide-and-conqure-dev-plugin.git
-cd divide-and-conqure-dev-plugin
-
-# Run the installer (automatically verifies git & gh exist before starting)
-./scripts/install-plugin.sh \
+./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+  --tool all \
   --target /path/to/your/project \
   --divisions engineering,security,testing
 ```
 
-### 2. Initialize GitHub Projects Kanban & Checkpoint Store
+### Initialize GitHub Projects Kanban & Start Orchestration
 
 ```bash
 cd /path/to/your/project
@@ -237,7 +275,7 @@ cd /path/to/your/project
   --project-number 1
 ```
 
-### 3. Prompt Google Antigravity (Recommended: Gemini Flash Family)
+Then prompt your agent (or run `/divide-and-conquer docs/SPECIFICATION.md`):
 
 ```text
 Using the divide-and-conqure-dev-plugin rules and the spec-decomposition skill:
@@ -269,10 +307,19 @@ Explore the example artifacts:
 
 ```text
 divide-and-conqure-dev-plugin/
-├── plugin.json                                     # Antigravity Marketplace Plugin Manifest
-├── .antigravity-plugin/plugin.json                 # Loader alias manifest
-├── .gemini-plugin/plugin.json                      # Gemini CLI plugin alias manifest
-├── hooks.json                                      # SessionStart hook enforcing git & gh preflight check
+├── plugin.json                                     # Google Antigravity Marketplace Manifest
+├── .antigravity-plugin/plugin.json                 # Antigravity loader manifest
+├── .gemini-plugin/plugin.json                      # Gemini CLI plugin manifest
+├── .claude-plugin/
+│   ├── plugin.json                                 # Claude Code Plugin Manifest
+│   └── marketplace.json                            # Claude Code Marketplace Catalog Manifest
+├── .codex-plugin/plugin.json                       # OpenAI Codex Plugin Manifest
+├── codex.json                                      # OpenAI Codex CLI root configuration
+├── AGENTS.md                                       # Root instructions (Antigravity & OpenAI Codex)
+├── CLAUDE.md                                       # Root instructions (Claude Code)
+├── hooks.json                                      # Antigravity SessionStart hook (git & gh check)
+├── hooks/hooks.json                                # Claude Code SessionStart hook (git & gh check)
+├── commands/                                       # Slash commands (/divide-and-conquer, /decompose-spec, etc.)
 ├── rules/
 │   ├── AGENTS.md                                   # Consolidated workspace governance rules (<24 KB)
 │   └── references/                                 # Deep-dive reference guides (Rules 01..06)
@@ -282,15 +329,16 @@ divide-and-conqure-dev-plugin/
 │   ├── divide-and-conquer-orchestrator/SKILL.md    # Parallel .worktrees/ & cascading gh pr merge
 │   ├── code-review-council/SKILL.md                # Multi-Council review & patch-implementer loop
 │   ├── cyclomatic-complexity/SKILL.md              # Language-agnostic CC <= 6 target, <= 10 cap, >15 blocker
-│   ├── security-audit/SKILL.md                     # Language-agnostic security & crypto audit (Gate G2)
+│   ├── security-audit/                             # Complete cloudflare/security-audit-skill suite (23 files)
 │   ├── github-projects-kanban/SKILL.md             # GitHub Projects v2 Kanban + checkpoint.json + PR reports
 │   └── agency-roster-selector/SKILL.md             # Selector for all 283 msitarzewski/agency-agents
 ├── agents/
+│   ├── *.md                                        # Top-level core orchestrators for Claude Code & Antigravity
 │   ├── core/                                       # 7 core orchestration & council agent definitions
 │   └── agency-catalog/                             # All 18 divisions & 283 agents from msitarzewski/agency-agents
 ├── scripts/
 │   ├── preflight-check.sh                          # Verifies git and gh exist before starting
-│   ├── install-plugin.sh                           # Installs plugin + chosen agents into a project
+│   ├── install-plugin.sh                           # Tri-platform installer (--tool antigravity|claude|codex|all)
 │   ├── select-agents.sh                            # Interactive/CLI selector for the 283 agency-agents
 │   ├── gh-kanban-sync.sh                           # Syncs GitHub Projects Kanban & checkpoint.json
 │   └── post-pr-report.sh                           # Posts Implementation & Council Reports to PR conversations

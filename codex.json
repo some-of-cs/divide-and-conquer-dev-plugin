@@ -1,0 +1,9 @@
+{
+  "name": "divide-and-conqure-dev-plugin",
+  "version": "1.0.0",
+  "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for OpenAI Codex, Google Antigravity, and Claude Code.",
+  "instructions": "./AGENTS.md",
+  "skills_dir": "./skills",
+  "agents_dir": "./agents",
+  "preflight_command": "./scripts/preflight-check.sh --quiet"
+}

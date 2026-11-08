@@ -1,0 +1,44 @@
+{
+  "name": "divide-and-conqure-dev-plugin",
+  "version": "1.0.0",
+  "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for Google Antigravity, Claude Code, and OpenAI Codex. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees, governed by multi-council code review, patch-implementer self-correction loops, GitHub Projects Kanban tracking, in-PR conversation reporting, cloudflare/security-audit-skill, and 283 specialist agents from msitarzewski/agency-agents.",
+  "author": {
+    "name": "some-of-cs",
+    "url": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin"
+  },
+  "homepage": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
+  "repository": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "antigravity-plugin",
+    "claude-code-plugin",
+    "codex-plugin",
+    "divide-and-conquer",
+    "multi-agent",
+    "parallel-worktrees",
+    "code-review-council",
+    "patch-implementer",
+    "github-projects",
+    "agency-agents",
+    "security-audit",
+    "cyclomatic-complexity"
+  ],
+  "commands": [
+    "./commands/divide-and-conquer.md",
+    "./commands/decompose-spec.md",
+    "./commands/council-review.md",
+    "./commands/select-agents.md",
+    "./commands/kanban-sync.md"
+  ],
+  "agents": [
+    "./agents/module-leader.md",
+    "./agents/story-leader.md",
+    "./agents/unit-implementer.md",
+    "./agents/patch-implementer.md",
+    "./agents/code-reviewer-council-president.md",
+    "./agents/git-workflow-master.md",
+    "./agents/quota-sentinel.md"
+  ],
+  "skills": "./skills",
+  "hooks": "./hooks/hooks.json"
+}

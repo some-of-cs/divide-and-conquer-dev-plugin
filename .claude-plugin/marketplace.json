@@ -1,0 +1,37 @@
+{
+  "name": "divide-and-conqure-dev-marketplace",
+  "owner": {
+    "name": "some-of-cs",
+    "url": "https://github.com/some-of-cs"
+  },
+  "metadata": {
+    "description": "Official marketplace catalog for divide-and-conqure-dev-plugin — Autonomous Divide-and-Conquer multi-agent engineering workflow for Google Antigravity, Claude Code, and OpenAI Codex.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "divide-and-conqure-dev-plugin",
+      "source": "./",
+      "description": "Transform monolithic specs into parallel Modules, User Stories, and non-blocking Implementation Units in isolated Git worktrees with Multi-Council Code Review, mandatory patch-implementer loops, GitHub Projects Kanban, in-PR conversation reporting, cloudflare/security-audit-skill, and 283 specialist agents from msitarzewski/agency-agents.",
+      "version": "1.0.0",
+      "author": {
+        "name": "some-of-cs",
+        "url": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin"
+      },
+      "homepage": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
+      "repository": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
+      "license": "Apache-2.0",
+      "category": "development-workflows",
+      "keywords": [
+        "divide-and-conquer",
+        "multi-agent",
+        "git-worktrees",
+        "code-review",
+        "security-audit",
+        "cyclomatic-complexity",
+        "github-projects",
+        "agency-agents"
+      ]
+    }
+  ]
+}
