@@ -4,8 +4,6 @@
   "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer multi-agent engineering & domain delivery plugin for Google Antigravity, Claude Code, and OpenAI Codex. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees across 8 industry --field presets.",
   "logo": "assets/logo.svg",
-  "icon": "assets/plugin-logo.svg",
-  "orgLogo": "assets/some-of-cs-logo.png",
   "suggestedPrompts": [
     "Decompose our specification into parallel Modules, User Stories, and non-blocking Implementation Units using spec-decomposition.",
     "Run /divide-and-conquer on docs/SPECIFICATION.md with parallel Git worktrees and multi-council code review.",
@@ -13,12 +11,10 @@
   ],
   "author": {
     "name": "Some(CS) (some-of-cs)",
-    "url": "https://github.com/some-of-cs",
-    "avatar": "https://avatars.githubusercontent.com/u/323249724?v=4",
-    "logo": "assets/some-of-cs-logo.png"
+    "url": "https://github.com/some-of-cs"
   },
-  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+  "homepage": "https://github.com/some-of-cs/some-divide-and-conquer",
+  "repository": "https://github.com/some-of-cs/some-divide-and-conquer",
   "license": "Apache-2.0",
   "keywords": [
     "antigravity-plugin",
@@ -32,15 +28,5 @@
     "gemini-flash",
     "cyclomatic-complexity",
     "security-audit"
-  ],
-  "requirements": {
-    "cli": [
-      "git",
-      "gh"
-    ],
-    "recommendedModelFamily": "gemini-flash"
-  },
-  "skills": "./skills",
-  "rules": "./rules/AGENTS.md",
-  "hooks": "./hooks.json"
+  ]
 }

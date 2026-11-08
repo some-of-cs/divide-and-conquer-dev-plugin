@@ -10,8 +10,8 @@
     "name": "Some(CS) (some-of-cs)",
     "url": "https://github.com/some-of-cs"
   },
-  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+  "homepage": "https://github.com/some-of-cs/some-divide-and-conquer",
+  "repository": "https://github.com/some-of-cs/some-divide-and-conquer",
   "license": "Apache-2.0",
   "keywords": [
     "antigravity-plugin",
@@ -28,11 +28,11 @@
     "cyclomatic-complexity"
   ],
   "commands": [
-    "./commands/divide-and-conquer.md",
-    "./commands/decompose-spec.md",
-    "./commands/council-review.md",
-    "./commands/select-agents.md",
-    "./commands/kanban-sync.md"
+    "./.claude-plugin/commands/divide-and-conquer.md",
+    "./.claude-plugin/commands/decompose-spec.md",
+    "./.claude-plugin/commands/council-review.md",
+    "./.claude-plugin/commands/select-agents.md",
+    "./.claude-plugin/commands/kanban-sync.md"
   ],
   "agents": [
     "./agents/module-leader.md",
@@ -44,5 +44,5 @@
     "./agents/quota-sentinel.md"
   ],
   "skills": "./skills",
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./.claude-plugin/hooks.json"
 }

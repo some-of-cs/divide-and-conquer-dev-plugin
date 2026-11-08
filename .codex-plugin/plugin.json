@@ -19,20 +19,20 @@
   ],
   "author": {
     "name": "some-of-cs",
-    "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
+    "url": "https://github.com/some-of-cs/some-divide-and-conquer"
   },
-  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "hooks": "./hooks/hooks.json",
+  "homepage": "https://github.com/some-of-cs/some-divide-and-conquer",
+  "repository": "https://github.com/some-of-cs/some-divide-and-conquer",
+  "hooks": "./.claude-plugin/hooks.json",
   "skills": "./skills",
   "agents": "./agents",
-  "instructions": "./AGENTS.md",
+  "instructions": "./rules/AGENTS.md",
   "interface": {
     "displayName": "Some Divide-and-Conquer",
     "shortDescription": "Decompose monolithic specs into parallel Git worktree units with multi-council review and 283 specialist agents.",
     "longDescription": "Transforms monolithic specifications into bounded Modules, User Stories, and dynamically sized non-blocking Implementation Units in isolated Git worktrees, governed by multi-council code review, mandatory patch-implementer remediation loops, GitHub Projects Kanban tracking, and 8 industry --field presets.",
     "category": "Development Workflows",
-    "websiteURL": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+    "websiteURL": "https://github.com/some-of-cs/some-divide-and-conquer",
     "logoURL": "./assets/logo.svg",
     "iconURL": "./assets/plugin-logo.svg",
     "brandLogoURL": "./assets/some-of-cs-logo.png",

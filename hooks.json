@@ -1,16 +1,10 @@
 {
-  "hooks": {
+  "verify-git-and-gh-preflight": {
     "SessionStart": [
       {
-        "matcher": "*",
-        "hooks": [
-          {
-            "name": "verify-git-and-gh-preflight",
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/preflight-check.sh --quiet",
-            "timeout": 10
-          }
-        ]
+        "type": "command",
+        "command": "./scripts/preflight-check.sh --hook-json",
+        "timeout": 10
       }
     ]
   }

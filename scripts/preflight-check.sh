@@ -7,13 +7,15 @@ set -euo pipefail
 
 QUIET=false
 SKIP_AUTH=false
+HOOK_JSON=false
 
 for arg in "$@"; do
   case "$arg" in
     --quiet|-q) QUIET=true ;;
     --skip-auth) SKIP_AUTH=true ;;
+    --hook-json) QUIET=true; HOOK_JSON=true ;;
     --help|-h)
-      echo "Usage: $0 [--quiet] [--skip-auth]"
+      echo "Usage: $0 [--quiet] [--skip-auth] [--hook-json]"
       echo "Verifies that git and gh (GitHub CLI) are installed and ready before starting the plugin."
       exit 0
       ;;
@@ -27,6 +29,10 @@ log() {
 }
 
 fail() {
+  if [ "$HOOK_JSON" = true ]; then
+    printf '{"injectSteps":[{"errorMessage":{"userMessage":"[some-divide-and-conquer] Preflight failed: %s"}}]}\n' "$*"
+    exit 0
+  fi
   echo "❌ [some-divide-and-conquer] PREFLIGHT FAILED: $*" >&2
   exit 1
 }
@@ -63,3 +69,6 @@ if [ "$SKIP_AUTH" = false ]; then
 fi
 
 log "✅ [Gate 0 Preflight] All required tools (git, gh) verified. Ready to start some-divide-and-conquer."
+if [ "$HOOK_JSON" = true ]; then
+  printf '{}\n'
+fi

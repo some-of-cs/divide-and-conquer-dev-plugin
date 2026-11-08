@@ -6,7 +6,7 @@
   <a href="https://github.com/some-of-cs">
     <img src="assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="110" height="110" style="vertical-align: middle; border-radius: 18px; margin-right: 16px;" />
   </a>
-  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+  <a href="https://github.com/some-of-cs/some-divide-and-conquer">
     <img src="assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="110" height="110" style="vertical-align: middle;" />
   </a>
 </p>
@@ -149,7 +149,7 @@ gh auth login -s repo,project,read:project
 **Option A: Clone and Install**
 ```bash
 # Clone the plugin
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 # Install into your project
 ./some-divide-and-conquer/scripts/install-plugin.sh \
@@ -184,7 +184,7 @@ agy plugin install some-of-cs/some-divide-and-conquer
 
 **Option A: Clone and Install**
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 ./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool claude \
@@ -213,7 +213,7 @@ your-project/
 
 **Option B: Claude Code Marketplace**
 ```
-/plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
+/plugin marketplace add some-of-cs/some-divide-and-conquer
 /plugin install some-divide-and-conquer@some-divide-and-conquer-marketplace
 ```
 
@@ -229,7 +229,7 @@ your-project/
 ### 4.3 OpenAI Codex CLI
 
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 ./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool codex \
@@ -252,7 +252,7 @@ your-project/
 **Codex Configuration** (`codex.json` in plugin root):
 ```json
 {
-  "instructions": "./AGENTS.md",
+  "instructions": "./rules/AGENTS.md",
   "skills_dir": "./skills",
   "agents_dir": "./agents",
   "preflight_command": "./scripts/preflight-check.sh --quiet"
@@ -838,10 +838,10 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 
 | Feature | Status | Notes |
 | :--- | :--- | :--- |
-| Plugin manifest | ✅ | `plugin.json` + `.antigravity-plugin/plugin.json` + `.gemini-plugin/plugin.json` |
+| Plugin manifest | ✅ | `plugin.json` |
 | Session hook | ✅ | `hooks.json` (auto-runs preflight on session start) |
 | Skills | ✅ | Auto-discovered from `skills/` directory |
-| Rules | ✅ | `AGENTS.md` loaded as workspace agent rules |
+| Rules | ✅ | `rules/AGENTS.md` loaded as workspace agent rules |
 | Subagent spawning | ✅ | `invoke_subagent` + `define_subagent` |
 | Watchdog schedules | ✅ | `schedule` tool with cron expressions |
 | Slash commands | ❌ | Use Antigravity's native `/plan`, `/goal`, `/teamwork` instead |
@@ -854,10 +854,10 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 | Feature | Status | Notes |
 | :--- | :--- | :--- |
 | Plugin manifest | ✅ | `.claude-plugin/plugin.json` + `marketplace.json` |
-| Session hook | ✅ | `hooks/hooks.json` (uses `CLAUDE_PLUGIN_ROOT` env var) |
+| Session hook | ✅ | `.claude-plugin/hooks.json` (uses `CLAUDE_PLUGIN_ROOT` env var) |
 | Skills | ✅ | Referenced from `.claude-plugin/plugin.json` |
-| Rules | ✅ | `CLAUDE.md` loaded automatically |
-| Slash commands | ✅ | 5 commands in `commands/` directory |
+| Rules | ✅ | `rules/AGENTS.md` (installed as `CLAUDE.md`) loaded automatically |
+| Slash commands | ✅ | 5 commands in `.claude-plugin/commands/` directory |
 | Agent definitions | ✅ | 7 agents in `.claude-plugin/plugin.json` `agents` array |
 | Marketplace | ✅ | `marketplace.json` catalog entry ready |
 
@@ -867,7 +867,7 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 | :--- | :--- | :--- |
 | Plugin manifest | ✅ | `codex.json` + `.codex-plugin/plugin.json` |
 | Preflight command | ✅ | `preflight_command` in `codex.json` |
-| Instructions | ✅ | `AGENTS.md` via `instructions` field |
+| Instructions | ✅ | `rules/AGENTS.md` via `instructions` field |
 | Skills | ✅ | `skills_dir` in `codex.json` |
 | Agents | ✅ | `agents_dir` in `codex.json` |
 | Slash commands | ❌ | Prompt the agent directly |
@@ -978,8 +978,8 @@ This plugin depends on and gratefully acknowledges:
 
 ### Support & Contributing
 
-- **Issues**: [GitHub Issues](https://github.com/some-of-cs/divide-and-conquer-dev-plugin/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/some-of-cs/divide-and-conquer-dev-plugin/discussions)
+- **Issues**: [GitHub Issues](https://github.com/some-of-cs/some-divide-and-conquer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/some-of-cs/some-divide-and-conquer/discussions)
 - **Sponsor**: [GitHub Sponsors](https://github.com/sponsors/some-of-cs)
 
 ---

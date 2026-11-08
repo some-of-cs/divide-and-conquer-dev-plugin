@@ -21,10 +21,10 @@
       "version": "1.1.0",
       "author": {
         "name": "some-of-cs",
-        "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
+        "url": "https://github.com/some-of-cs/some-divide-and-conquer"
       },
-      "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-      "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+      "homepage": "https://github.com/some-of-cs/some-divide-and-conquer",
+      "repository": "https://github.com/some-of-cs/some-divide-and-conquer",
       "license": "Apache-2.0",
       "category": "development-workflows",
       "keywords": [

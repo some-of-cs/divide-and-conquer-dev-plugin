@@ -6,7 +6,7 @@
   <a href="https://github.com/some-of-cs">
     <img src="../../assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="96" height="96" style="vertical-align: middle; border-radius: 16px; margin-right: 14px;" />
   </a>
-  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+  <a href="https://github.com/some-of-cs/some-divide-and-conquer">
     <img src="../../assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="96" height="96" style="vertical-align: middle;" />
   </a>
 </p>
