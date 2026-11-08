@@ -20,7 +20,7 @@ Use this skill whenever acting as a **Code Reviewer** or **Council President** a
    - At the Unit tier, the Unit Implementer fixes the issues and re-invokes the Council.
    - At the Story and Module tiers, the Leader spawns a dedicated **`patch-implementer`** subagent (`patch/us-M.S.0-<scope>` or `patch/module-M-<scope>`) to fix the issues via a patch PR and re-invokes the Council.
 4. **100% In-Conversation PR Audit Trail**:
-   - Every review iteration MUST be posted directly as a comment on the GitHub Pull Request via `gh pr comment <PR> --body "..."` (or `./scripts/post-pr-report.sh`). Never write local report files.
+   - Every review iteration MUST be posted directly as a comment on the GitHub Pull Request via `gh pr comment <PR> --body "..."` (or `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/post-pr-report.sh`). Never write local report files.
 
 ---
 

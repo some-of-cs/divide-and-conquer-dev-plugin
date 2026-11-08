@@ -683,24 +683,24 @@ The plugin bundles all **18 divisions and 283 specialist agents** from [`msitarz
 
 | Division | Count | Example Agents |
 | :--- | :---: | :--- |
-| **Engineering** | 66 | `backend-architect`, `frontend-developer`, `rust-pro`, `python-pro`, `ai-engineer`, `devops-automator` |
-| **Security** | 12 | `application-security-engineer`, `penetration-tester`, `cloud-security-architect`, `cryptography-engineer` |
-| **Testing** | 9 | `api-tester`, `performance-benchmarker`, `qa-automation-engineer`, `chaos-engineer` |
-| **Design** | — | `ui-designer`, `ux-researcher`, `design-system-architect` |
-| **Product** | — | `product-manager`, `technical-product-manager`, `sprint-prioritizer` |
-| **Project Management** | — | `project-shepherd`, `agile-scrum-master`, `delivery-director` |
-| **Specialized** | — | `agents-orchestrator`, `mcp-builder`, `prompt-engineer`, `knowledge-graph-engineer` |
-| **Game Development** | — | Unity, Unreal, Godot, Blender, 3D, shader specialists |
-| **Spatial Computing** | — | `xr-interface-architect`, `visionos-engineer`, `webxr-developer` |
-| **Finance** | — | `financial-analyst`, `quant-developer`, `fintech-compliance-specialist` |
-| **Healthcare** | — | `clinical-informatics-specialist`, `hipaa-compliance-architect` |
-| **GIS** | — | `geospatial-data-scientist`, `cartographic-designer` |
-| **Research** | — | `deep-research-synthesizer`, `competitive-intelligence-analyst` |
-| **Academic** | — | `anthropologist`, `literature-review-architect` |
-| **Marketing** | — | `content-creator`, `growth-hacker`, `seo-strategist` |
-| **Paid Media** | — | `ppc-campaign-strategist`, `programmatic-buyer` |
-| **Sales** | — | `account-strategist`, `solutions-architect` |
-| **Support** | — | `support-responder`, `incident-commander` |
+| **Engineering** | 66 | `backend-architect`, `frontend-developer`, `rust-refactoring-specialist`, `ai-engineer`, `devops-automator`, `software-architect` |
+| **Security** | 12 | `application-security-engineer`, `penetration-tester`, `cloud-security-architect`, `security-architect`, `secrets-credential-hygiene-engineer` |
+| **Testing** | 9 | `api-tester`, `performance-benchmarker`, `test-automation-engineer`, `accessibility-auditor`, `test-results-analyzer` |
+| **Design** | 10 | `ui-designer`, `ux-researcher`, `ux-architect`, `brand-guardian`, `whimsy-injector` |
+| **Product** | 6 | `product-manager`, `dx-engineer`, `sprint-prioritizer`, `feedback-synthesizer`, `trend-researcher` |
+| **Project Management** | 7 | `project-shepherd`, `senior-project-manager`, `studio-operations`, `jira-workflow-steward` |
+| **Specialized** | 59 | `agents-orchestrator`, `mcp-builder`, `workflow-architect`, `lsp-index-engineer`, `model-qa-specialist` |
+| **Game Development** | 21 | `unity-architect`, `unreal-systems-engineer`, `godot-gameplay-scripter`, `blender-add-on-engineer`, `level-designer` |
+| **Spatial Computing** | 6 | `xr-interface-architect`, `visionos-spatial-engineer`, `xr-immersive-developer` |
+| **Finance** | 5 | `financial-analyst`, `fp-a-analyst`, `investment-researcher`, `tax-strategist` |
+| **Healthcare** | 3 | `clinical-evidence-agent`, `healthcare-innovation-strategist`, `sovereign-health-systems-agent` |
+| **GIS** | 13 | `spatial-data-scientist`, `bim-gis-specialist`, `cartography-designer`, `geoai-ml-engineer` |
+| **Research** | 1 | `research-synthesist` |
+| **Academic** | 6 | `anthropologist`, `statistician`, `historian`, `psychologist` |
+| **Marketing** | 37 | `content-creator`, `growth-hacker`, `seo-specialist`, `developer-community-builder` |
+| **Paid Media** | 7 | `ppc-campaign-strategist`, `ad-creative-strategist`, `programmatic-display-buyer` |
+| **Sales** | 9 | `account-strategist`, `sales-engineer`, `proposal-strategist` |
+| **Support** | 6 | `support-responder`, `infrastructure-maintainer`, `analytics-reporter` |
 
 ### Recommended Agent Presets
 
@@ -715,15 +715,15 @@ The plugin bundles all **18 divisions and 283 specialist agents** from [`msitarz
 **Rust Systems Programming:**
 ```bash
 ./scripts/select-agents.sh --agents \
-  backend-architect,rust-pro,application-security-engineer,\
-  cryptography-engineer,performance-benchmarker \
+  backend-architect,rust-refactoring-specialist,application-security-engineer,\
+  security-architect,performance-benchmarker \
   --target .
 ```
 
 **Python AI/ML Pipeline:**
 ```bash
 ./scripts/select-agents.sh --agents \
-  ai-engineer,python-pro,data-engineer,backend-architect,\
+  ai-engineer,rag-pipeline-engineer,data-engineer,backend-architect,\
   api-tester,cloud-security-architect \
   --target .
 ```
@@ -829,7 +829,7 @@ An autonomous `quota-sentinel` agent monitors your API quota:
 | Subagent spawning | ✅ | `invoke_subagent` + `define_subagent` |
 | Watchdog schedules | ✅ | `schedule` tool with cron expressions |
 | Slash commands | ❌ | Use Antigravity's native `/plan`, `/goal`, `/teamwork` instead |
-| Recommended model | — | Gemini Flash (e.g., `gemini-3.5-flash`) |
+| Recommended model | — | Gemini Flash (e.g., `gemini-2.5-flash` / `gemini-3-flash`) |
 
 **Antigravity-Specific Workflow Tip:** Use `/teamwork` to let Antigravity's native team orchestration manage the high-level decomposition, then let the plugin's rules govern the detailed execution.
 

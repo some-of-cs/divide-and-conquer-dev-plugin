@@ -88,4 +88,4 @@ $$S_{\text{story}} = (0.35 \times D_1) + (0.25 \times D_2) + (0.20 \times D_3) +
 
 After decomposing the monolithic spec:
 1. Create the decomposition roadmap document (e.g., `docs/architecture/DECOMPOSITION_ROADMAP.md`) listing every Module, User Story, its calculated $S_{\text{story}}$ score, chosen unit count $K$, and the exact file ownership boundary of each Unit $1..K$.
-2. Run `./scripts/gh-kanban-sync.sh init` to populate all Modules, User Stories, and Implementation Units on the **GitHub Projects Kanban board** and initialize `.agents/checkpoints/<module-id>/checkpoint.json`.
+2. Run `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/gh-kanban-sync.sh init` to populate all Modules, User Stories, and Implementation Units on the **GitHub Projects Kanban board** and initialize `.agents/checkpoints/<module-id>/checkpoint.json`.

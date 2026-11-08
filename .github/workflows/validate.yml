@@ -1,0 +1,113 @@
+name: Validate Plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-json:
+    name: Validate JSON Manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate all JSON files
+        run: |
+          EXIT_CODE=0
+          for f in plugin.json codex.json hooks.json hooks/hooks.json \
+                   .claude-plugin/plugin.json .claude-plugin/marketplace.json \
+                   .antigravity-plugin/plugin.json .gemini-plugin/plugin.json \
+                   .codex-plugin/plugin.json \
+                   agents/agency-catalog/divisions.json \
+                   examples/some-stripe/sample-checkpoint.json; do
+            if [ -f "$f" ]; then
+              if jq . "$f" > /dev/null 2>&1; then
+                echo "✅ $f — valid JSON"
+              else
+                echo "❌ $f — INVALID JSON"
+                EXIT_CODE=1
+              fi
+            else
+              echo "⚠️  $f — file not found (skipping)"
+            fi
+          done
+          exit $EXIT_CODE
+
+  shellcheck:
+    name: ShellCheck Scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: sudo apt-get install -y shellcheck
+
+      - name: Run ShellCheck on all scripts
+        run: |
+          shellcheck --severity=error scripts/*.sh
+
+  test-security-audit-validators:
+    name: Test Security Audit Validators
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run validate-findings tests
+        run: node --test skills/security-audit/validate-findings.test.cjs
+
+      - name: Run validate-coverage-ledger tests
+        run: node --test skills/security-audit/validate-coverage-ledger.test.cjs
+
+  cross-platform-scripts:
+    name: Script Portability Check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify scripts parse without errors
+        run: |
+          for script in scripts/*.sh; do
+            bash -n "$script" && echo "✅ $script — syntax OK" || echo "❌ $script — syntax error"
+          done
+
+      - name: Run preflight-check (skip auth)
+        run: |
+          chmod +x scripts/preflight-check.sh
+          ./scripts/preflight-check.sh --skip-auth
+
+  license-check:
+    name: License Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify LICENSE file is full Apache 2.0
+        run: |
+          # Full Apache 2.0 should be >= 11,000 bytes
+          SIZE=$(wc -c < LICENSE)
+          if [ "$SIZE" -lt 11000 ]; then
+            echo "❌ LICENSE file is only $SIZE bytes (expected >= 11,000 for full Apache 2.0)"
+            exit 1
+          fi
+          echo "✅ LICENSE file is $SIZE bytes — appears to be full Apache 2.0"
+
+      - name: Verify NOTICE file exists
+        run: |
+          if [ ! -f NOTICE ]; then
+            echo "❌ NOTICE file is missing"
+            exit 1
+          fi
+          echo "✅ NOTICE file exists"

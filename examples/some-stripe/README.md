@@ -32,8 +32,8 @@ Using the **`divide-and-conquer-dev-plugin`** workflow:
 ## 2. Selected Specialist Agents (from `msitarzewski/agency-agents`)
 
 For `some-stripe`, the following specialist agents were selected alongside the 7 core orchestration agents:
-- **`backend-architect` / `microkernel-architect`**: Enforced zero-monolith microkernel boundaries and dual-protocol v1/v2 serialization.
-- **`rust-pro` / `Rust Refactoring Specialist`**: Enforced Gate G0 (`cargo clippy -- -D warnings`, `cargo fmt --check`), Gate G-Borrow (zero domain `.clone()`), and Gate G-Complexity ($CC \le 6$ target, $\le 10$ ceiling).
+- **`backend-architect` / `software-architect`**: Enforced zero-monolith microkernel boundaries and dual-protocol v1/v2 serialization.
+- **`rust-refactoring-specialist` (`Rust Refactoring Specialist`)**: Enforced Gate G0 (`cargo clippy -- -D warnings`, `cargo fmt --check`), Gate G-Borrow (zero domain `.clone()`), and Gate G-Complexity ($CC \le 6$ target, $\le 10$ ceiling).
 - **`application-security-engineer`**: Enforced Gate G2 (constant-time HMAC-SHA256, 300s replay drift tolerance, 1 MB payload cap, `ZeroizeOnDrop`) and Gate G-Law (PCI-DSS 4.0 zero raw PAN, ISO 4217 integer minor units).
 - **`api-tester`**: Verified Gate G1 & Gate G4 wire contract tests.
 - **`code-reviewer`**: Acted as Council President across parallel Unit, Patch, Story, Module, and End-of-Module Whole-Codebase reviews.

@@ -56,7 +56,7 @@ Single-agent coding workflows break down on large specifications: context window
 > ### High Code Quality vs. High Token Consumption (Designed for the Gemini Flash Family)
 > - **Extreme Output Quality**: By running $K$ parallel Unit Implementers, multiple concurrent Code Reviewing Councils (`security-audit` + `cyclomatic-complexity`), and automated `patch-implementer` remediation loops across every tier, this plugin produces **exceptionally high-quality, zero-warning, production-grade code and products**.
 > - **High Token Consumption Trade-Off**: Because every unit, patch, story, and module undergoes full independent multi-agent implementation and multi-council verification, **this workflow consumes a large volume of tokens**.
-> - **Primary Target — Gemini Flash Family**: This plugin is **mainly developed, tuned, and recommended for the Gemini Flash family** (such as `gemini-3.5-flash` and `gemini-3.8-flash`), which delivers the high speed, large context window, and token cost-efficiency required for parallel multi-agent swarms.
+> - **Primary Target — Gemini Flash Family**: This plugin is **mainly developed, tuned, and recommended for the Gemini Flash family** (such as `gemini-2.5-flash` and `gemini-3-flash`), which delivers the high speed, large context window, and token cost-efficiency required for parallel multi-agent swarms.
 > - **Single-Profile Operation with `quota-sentinel`**: This plugin operates on **one profile at a time**. A dedicated autonomous **`quota-sentinel`** monitors token velocity and rate limits (`429` / `1%` remaining capacity), automatically flushing state to `.agents/checkpoints/<module-id>/checkpoint.json`, pausing active agents, and scheduling an automatic wakeup timer until your quota resets.
 
 ---
@@ -188,8 +188,8 @@ All skills used by the Orchestrators and Code Reviewing Councils are included in
 Because `divide-and-conquer-dev-plugin` is completely generic across all languages and domains, it bundles **all 18 divisions and 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) under [`agents/agency-catalog/`](agents/agency-catalog/):
 
 - **Engineering (66 agents)**: `backend-architect`, `frontend-developer`, `ai-engineer`, `devops-automator`, `database-optimizer`, `mobile-app-builder`, `api-platform-engineer`, `code-reviewer`, `git-workflow-master`, and more.
-- **Security (12 agents)**: `application-security-engineer`, `ai-generated-code-security-auditor`, `penetration-tester`, `cloud-security-architect`, `compliance-auditor`, `cryptography-engineer`.
-- **Testing (9 agents)**: `api-tester`, `performance-benchmarker`, `qa-automation-engineer`, `accessibility-auditor`, `test-results-analyzer`.
+- **Security (12 agents)**: `application-security-engineer`, `ai-generated-code-security-auditor`, `penetration-tester`, `cloud-security-architect`, `compliance-auditor`, `security-architect`.
+- **Testing (9 agents)**: `api-tester`, `performance-benchmarker`, `test-automation-engineer`, `accessibility-auditor`, `test-results-analyzer`.
 - **Design, Product, Project Management, Game Dev, Spatial Computing, Finance, Healthcare, GIS, Specialized, Research, Academic, Marketing, Paid Media, Sales, Support** (all 18 divisions included).
 
 Browse and enable the exact agents your project needs:
@@ -333,8 +333,7 @@ divide-and-conquer-dev-plugin/
 │   ├── github-projects-kanban/SKILL.md             # GitHub Projects v2 Kanban + checkpoint.json + PR reports
 │   └── agency-roster-selector/SKILL.md             # Selector for all 283 msitarzewski/agency-agents
 ├── agents/
-│   ├── *.md                                        # Top-level core orchestrators for Claude Code & Antigravity
-│   ├── core/                                       # 7 core orchestration & council agent definitions
+│   ├── *.md                                        # 7 core orchestration & council agent definitions
 │   └── agency-catalog/                             # All 18 divisions & 283 agents from msitarzewski/agency-agents
 ├── scripts/
 │   ├── preflight-check.sh                          # Verifies git and gh exist before starting

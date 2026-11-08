@@ -8,4 +8,4 @@ argument-hint: [--list-divisions | --search <keyword> | --divisions <d1,d2> | --
 Arguments: `$ARGUMENTS`
 
 1. Load `skills/agency-roster-selector/SKILL.md`.
-2. Run `./scripts/select-agents.sh $ARGUMENTS` to list divisions, search the 283 bundled agents from [`msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents), or enable the chosen agents into the current workspace.
+2. Run `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh $ARGUMENTS` to list divisions, search the 283 bundled agents from [`msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents), or enable the chosen agents into the current workspace.

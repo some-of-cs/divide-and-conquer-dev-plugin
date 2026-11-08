@@ -74,8 +74,10 @@ mkdir -p "$TARGET_DIR/.agents/rules" \
 cp "$PLUGIN_ROOT/rules/AGENTS.md" "$TARGET_DIR/AGENTS.md"
 cp -r "$PLUGIN_ROOT/rules/references/"* "$TARGET_DIR/.agents/rules/"
 cp -r "$PLUGIN_ROOT/skills/"* "$TARGET_DIR/.agents/skills/"
-cp -r "$PLUGIN_ROOT/agents/core/"* "$TARGET_DIR/.agents/agents/"
+cp "$PLUGIN_ROOT/agents/"*.md "$TARGET_DIR/.agents/agents/"
 cp "$PLUGIN_ROOT/scripts/"*.sh "$TARGET_DIR/scripts/"
+cp "$PLUGIN_ROOT/hooks.json" "$TARGET_DIR/hooks.json"
+mkdir -p "$TARGET_DIR/hooks" && cp "$PLUGIN_ROOT/hooks/hooks.json" "$TARGET_DIR/hooks/hooks.json" 2>/dev/null || true
 chmod +x "$TARGET_DIR/scripts/"*.sh
 
 # 3. Enable selected specialist agents from msitarzewski/agency-agents into .agents/

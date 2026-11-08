@@ -12,7 +12,7 @@ Before running **any** step of the `divide-and-conquer-dev-plugin` (decompositio
 Run the bundled preflight script at the start of the session:
 
 ```bash
-./scripts/preflight-check.sh
+${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/preflight-check.sh
 ```
 
 Or run the checks directly:

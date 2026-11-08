@@ -119,7 +119,7 @@ case "$ACTION" in
       IFS=',' read -ra DIVS <<< "$DIVISIONS_CSV"
       for div in "${DIVS[@]}"; do
         echo "=== Division: $div ==="
-        find "$RAW_DIR/$div" -name "*.md" -printf "  - %f\n" | sed 's/\.md$//' | sort
+        find "$RAW_DIR/$div" -name "*.md" -exec basename {} .md \; | sort | sed 's/^/  - /'
       done
     else
       ls -1d "$SKILLS_DIR"/agency-* | xargs -n1 basename | sed 's/^agency-//' | sort
