@@ -1,8 +1,21 @@
 # Flagship Case Study: `some-stripe` (`v0.8.0`)
 
+<div align="center">
+
+<p align="center">
+  <a href="https://github.com/some-of-cs">
+    <img src="../../assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="96" height="96" style="vertical-align: middle; border-radius: 16px; margin-right: 14px;" />
+  </a>
+  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+    <img src="../../assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="96" height="96" style="vertical-align: middle;" />
+  </a>
+</p>
+
+</div>
+
 **Repository**: [`https://github.com/some-of-cs/some-stripe`](https://github.com/some-of-cs/some-stripe)
 
-`some-stripe` is the flagship real-world production codebase built end-to-end using the **`divide-and-conquer-dev-plugin`** methodology on **Google Antigravity**.
+`some-stripe` is the flagship real-world production codebase built end-to-end using the **`some-divide-and-conquer`** methodology by **[Some(CS)](https://github.com/some-of-cs)** on **Google Antigravity**.
 
 ---
 
@@ -10,7 +23,7 @@
 
 The project started with a single monolithic specification document (`docs/research/Stripe Services and API Research.md`) covering both Stripe API v1 (`application/x-www-form-urlencoded` with zero-indexed bracket notation) and Stripe API v2 (`application/json` with Thin Event webhooks and cursor-driven pagination), strict cryptographic webhook verification, PCI-DSS 4.0 / PSD2 SCA / GDPR compliance, and zero-clone memory discipline.
 
-Using the **`divide-and-conquer-dev-plugin`** workflow:
+Using the **`some-divide-and-conquer`** workflow:
 
 1. **Level 0 $\to$ Level 1 (8 Bounded Modules)**:
    - `module-1`: Core Microkernel Runtime (`some-stripe-core`)

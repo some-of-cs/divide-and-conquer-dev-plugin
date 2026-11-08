@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conquer-dev-plugin — In-PR Conversation Reporter
+# some-divide-and-conquer — In-PR Conversation Reporter
 # Posts Implementation, Security/Compliance Audit, Complexity, and Council
 # Sign-Off reports directly to GitHub Pull Request conversations (zero local
 # report file clutter). Supports --field <FIELD_PROFILE> and auto-reads
@@ -182,7 +182,7 @@ if [[ "$REPORT_TYPE" == "implementation" ]]; then
 ${TEST_OUTPUT:-All unit, doctest, and linter checks passed with 0 warnings.}
 \`\`\`
 
-*Posted automatically by \`divide-and-conquer-dev-plugin\` (In-PR Conversation Audit Trail).*
+*Posted automatically by \`some-divide-and-conquer\` (In-PR Conversation Audit Trail).*
 EOF
 elif [[ "$REPORT_TYPE" == "review" ]]; then
   cat > "$TMP_BODY" <<EOF

@@ -1,9 +1,19 @@
-# 📘 Divide-and-Conquer Dev Plugin — Complete User Manual
+# 📘 some-divide-and-conquer — Complete User Manual
 
 <div align="center">
 
-**The Official How-to-Use Guide for Google Antigravity, Claude Code & OpenAI Codex**
+<p align="center">
+  <a href="https://github.com/some-of-cs">
+    <img src="assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="110" height="110" style="vertical-align: middle; border-radius: 18px; margin-right: 16px;" />
+  </a>
+  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+    <img src="assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="110" height="110" style="vertical-align: middle;" />
+  </a>
+</p>
 
+**The Official How-to-Use Guide for Google Antigravity, Claude Code & OpenAI Codex (`some-divide-and-conquer` by Some(CS))**
+
+[![Some(CS) Org](https://img.shields.io/badge/Org-Some(CS)-0F2942.svg)](https://github.com/some-of-cs)
 [![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](#)
 [![Antigravity](https://img.shields.io/badge/Antigravity-Supported-4285F4.svg)](#google-antigravity)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Supported-D97757.svg)](#claude-code)
@@ -43,7 +53,7 @@
 
 ## 1. What Is This Plugin?
 
-`divide-and-conquer-dev-plugin` is a **language-agnostic, autonomous multi-agent software engineering plugin** that works across three AI coding platforms:
+`some-divide-and-conquer` is a **language-agnostic, autonomous multi-agent software engineering plugin** by **[Some(CS)](https://github.com/some-of-cs)** that works across three AI coding platforms:
 
 - **Google Antigravity** (AGY / Gemini)
 - **Claude Code** (Anthropic)
@@ -139,10 +149,10 @@ gh auth login -s repo,project,read:project
 **Option A: Clone and Install**
 ```bash
 # Clone the plugin
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git
+git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
 
 # Install into your project
-./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
+./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool antigravity \
   --target /path/to/your/project \
   --divisions engineering,security,testing
@@ -167,16 +177,16 @@ your-project/
 
 **Option B: Antigravity Marketplace** (when available)
 ```bash
-agy plugin install some-of-cs/divide-and-conquer-dev-plugin
+agy plugin install some-of-cs/some-divide-and-conquer
 ```
 
 ### 4.2 Claude Code
 
 **Option A: Clone and Install**
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git
+git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
 
-./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
+./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool claude \
   --target /path/to/your/project \
   --divisions engineering,security,testing
@@ -204,7 +214,7 @@ your-project/
 **Option B: Claude Code Marketplace**
 ```
 /plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
-/plugin install divide-and-conquer-dev-plugin@divide-and-conquer-dev-marketplace
+/plugin install some-divide-and-conquer@some-divide-and-conquer-marketplace
 ```
 
 **Available Slash Commands (Claude Code Only):**
@@ -219,9 +229,9 @@ your-project/
 ### 4.3 OpenAI Codex CLI
 
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git
+git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
 
-./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
+./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool codex \
   --target /path/to/your/project \
   --divisions engineering,security,testing
@@ -252,7 +262,7 @@ your-project/
 ### 4.4 All Platforms at Once
 
 ```bash
-./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
+./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool all \
   --field software \
   --target /path/to/your/project
@@ -316,7 +326,7 @@ Choose the agents that match your project's tech stack:
 
 **On Antigravity or Codex** (prompt the agent directly):
 ```
-Using the divide-and-conquer-dev-plugin rules and the spec-decomposition skill:
+Using the some-divide-and-conquer plugin rules and the spec-decomposition skill:
 
 1. Run ./scripts/preflight-check.sh to verify git and gh are ready.
 2. Decompose docs/SPECIFICATION.md into bounded Modules, User Stories,

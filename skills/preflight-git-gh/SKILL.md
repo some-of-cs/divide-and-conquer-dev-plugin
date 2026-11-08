@@ -5,7 +5,7 @@ description: Mandatory Gate 0 preflight check that verifies git and GitHub CLI (
 
 # Gate 0: `git` and `gh` Preflight Verification Skill
 
-Before running **any** step of the `divide-and-conquer-dev-plugin` (decomposition, worktree creation, GitHub Projects Kanban setup, or subagent spawning), you MUST verify that both `git` and `gh` exist and are properly authenticated.
+Before running **any** step of the `some-divide-and-conquer` (decomposition, worktree creation, GitHub Projects Kanban setup, or subagent spawning), you MUST verify that both `git` and `gh` exist and are properly authenticated.
 
 ## 1. Mandatory Preflight Command
 

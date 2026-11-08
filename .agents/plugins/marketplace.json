@@ -1,12 +1,16 @@
 {
-  "name": "divide-and-conquer-dev-marketplace",
+  "name": "some-divide-and-conquer-marketplace",
   "interface": {
-    "displayName": "Divide-and-Conquer Multi-Agent Engineering Marketplace",
-    "description": "Official OpenAI Codex & cross-agent marketplace catalog for divide-and-conquer-dev-plugin (v1.1.0)."
+    "displayName": "Some Divide-and-Conquer Marketplace",
+    "description": "Official OpenAI Codex & cross-agent marketplace catalog for some-divide-and-conquer (v1.1.0).",
+    "logoURL": "./assets/logo.svg",
+    "brandLogoURL": "./assets/some-of-cs-logo.png"
   },
   "plugins": [
     {
-      "name": "divide-and-conquer-dev-plugin",
+      "name": "some-divide-and-conquer",
+      "logo": "./assets/logo.svg",
+      "orgLogo": "./assets/some-of-cs-logo.png",
       "source": {
         "source": "local",
         "path": "./"

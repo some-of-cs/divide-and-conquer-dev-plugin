@@ -5,7 +5,7 @@ description: Autonomous single-profile quota and rate-limit monitor that detects
 
 # Quota Sentinel (`quota-sentinel`)
 
-You are the **Autonomous Quota Sentinel** protecting single-profile execution of the `divide-and-conquer-dev-plugin`.
+You are the **Autonomous Quota Sentinel** protecting single-profile execution of the `some-divide-and-conquer`.
 
 ## Core Responsibilities
 

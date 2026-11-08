@@ -37,6 +37,14 @@ jobs:
               echo "⚠️  $f — file not found (skipping)"
             fi
           done
+          for asset in assets/logo.svg assets/plugin-logo.svg assets/some-of-cs-logo.svg assets/some-of-cs-logo.png; do
+            if [ -s "$asset" ]; then
+              echo "✅ $asset — exists and non-empty"
+            else
+              echo "❌ $asset — missing or empty"
+              EXIT_CODE=1
+            fi
+          done
           exit $EXIT_CODE
 
   shellcheck:

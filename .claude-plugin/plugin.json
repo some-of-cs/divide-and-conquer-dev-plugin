@@ -1,10 +1,14 @@
 {
-  "name": "divide-and-conquer-dev-plugin",
+  "name": "some-divide-and-conquer",
+  "displayName": "Some Divide-and-Conquer",
   "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for Google Antigravity, Claude Code, and OpenAI Codex. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees, governed by multi-council code review, patch-implementer self-correction loops, GitHub Projects Kanban tracking, in-PR conversation reporting, cloudflare/security-audit-skill, and 283 specialist agents from msitarzewski/agency-agents.",
+  "logo": "./assets/logo.svg",
+  "icon": "./assets/plugin-logo.svg",
+  "orgLogo": "./assets/some-of-cs-logo.png",
   "author": {
-    "name": "some-of-cs",
-    "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
+    "name": "Some(CS) (some-of-cs)",
+    "url": "https://github.com/some-of-cs"
   },
   "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
@@ -40,6 +44,5 @@
     "./agents/quota-sentinel.md"
   ],
   "skills": "./skills",
-  "hooks": "./hooks/hooks.json",
-  "displayName": "Divide-and-Conquer Multi-Agent Engineering"
+  "hooks": "./hooks/hooks.json"
 }

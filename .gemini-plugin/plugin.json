@@ -1,17 +1,21 @@
 {
-  "name": "divide-and-conquer-dev-plugin",
-  "displayName": "Divide-and-Conquer Multi-Agent Engineering",
+  "name": "some-divide-and-conquer",
+  "displayName": "Some Divide-and-Conquer",
   "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer multi-agent engineering & domain delivery plugin for Google Antigravity, Claude Code, and OpenAI Codex. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees across 8 industry --field presets.",
   "logo": "../assets/logo.svg",
+  "icon": "../assets/plugin-logo.svg",
+  "orgLogo": "../assets/some-of-cs-logo.png",
   "suggestedPrompts": [
     "Decompose our specification into parallel Modules, User Stories, and non-blocking Implementation Units using spec-decomposition.",
     "Run /divide-and-conquer on docs/SPECIFICATION.md with parallel Git worktrees and multi-council code review.",
     "Audit our open Pull Request across all 6 quality gates using code-review-council, security-audit, and cyclomatic-complexity."
   ],
   "author": {
-    "name": "some-of-cs",
-    "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
+    "name": "Some(CS) (some-of-cs)",
+    "url": "https://github.com/some-of-cs",
+    "avatar": "https://avatars.githubusercontent.com/u/323249724?v=4",
+    "logo": "../assets/some-of-cs-logo.png"
   },
   "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
