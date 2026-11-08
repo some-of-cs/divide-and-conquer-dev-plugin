@@ -28,12 +28,12 @@ $$S_{\text{story}} = 0.35 D_1 + 0.25 D_2 + 0.20 D_3 + 0.20 D_4$$
 
 | Story Score ($S_{\text{story}}$) | Recommended Units ($K$) | Typical Profile |
 | :---: | :---: | :--- |
-| **$1.00 - 1.50$** | **2 Units** | Small feature, config module, or compact UI + API slice |
-| **$1.51 - 2.10$** | **3 Units** | Focused domain entity, service client, and webhook/handler slice |
-| **$2.11 - 2.60$** | **4 Units** | Multi-endpoint resource or full-stack feature slice |
-| **$2.61 - 3.10$** | **5 Units** | Standard complex user story (domain + operations + pagination/streams + edge cases) |
+| **$1.00 - 1.25$** | **1–2 Units** | Small feature, config module, or compact UI + API slice |
+| **$1.26 - 2.00$** | **3 Units** | Focused domain entity, service client, and webhook/handler slice |
+| **$2.01 - 2.55$** | **4 Units** | Multi-endpoint resource or full-stack feature slice |
+| **$2.56 - 3.10$** | **5 Units** | Standard complex user story (domain + operations + pagination/streams + edge cases) |
 | **$3.11 - 3.55$** | **6–7 Units** | Large multi-component subsystem |
-| **$> 3.55$** | **8+ Units (or Split Story)** | Very large story; either split into 8 orthogonal units or refactor into 2 User Stories |
+| **$3.56 - 4.00$** | **8+ Units (or Split Story)** | Very large story; either split into 8 orthogonal units or refactor into 2 User Stories |
 
 ## 3. Pure-Implementation & Non-Blocking Unit Invariant
 

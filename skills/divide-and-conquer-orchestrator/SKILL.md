@@ -13,7 +13,7 @@ Use this skill to execute a decomposed software roadmap with maximum parallelism
 
 1. **Run Gate 0 (`preflight-git-gh`)**:
    ```bash
-   ./scripts/preflight-check.sh
+   ${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/preflight-check.sh
    ```
 2. **Reconcile Existing State (Zero Duplication)**:
    - Inspect `.agents/checkpoints/<module-id>/checkpoint.json`, `git worktree list`, `git branch -a`, and `gh pr list --state all`.

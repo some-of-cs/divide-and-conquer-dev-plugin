@@ -21,6 +21,7 @@ FILES=""
 TEST_CMD=""
 TEST_OUTPUT=""
 VERDICT="APPROVED"
+VERDICT_EXPLICIT=false
 MAX_CC="4"
 SECURITY_SUMMARY="0 Critical/High/Medium issues; input bounds and secret redaction verified."
 COVERAGE=">= 90% lines, >= 85% branches"
@@ -39,20 +40,39 @@ while [[ $# -gt 0 ]]; do
     --files) FILES="$2"; shift 2 ;;
     --test-cmd) TEST_CMD="$2"; shift 2 ;;
     --test-output) TEST_OUTPUT="$2"; shift 2 ;;
-    --verdict) VERDICT="$2"; shift 2 ;;
+    --verdict) VERDICT="$2"; VERDICT_EXPLICIT=true; shift 2 ;;
     --max-cc) MAX_CC="$2"; shift 2 ;;
     --security-summary) SECURITY_SUMMARY="$2"; shift 2 ;;
     --coverage) COVERAGE="$2"; shift 2 ;;
     --dry-run) DRY_RUN=true; shift ;;
+    --g0) G0_STATUS="$2"; shift 2 ;;
+    --g1) G1_STATUS="$2"; shift 2 ;;
+    --g2) G2_STATUS="$2"; shift 2 ;;
+    --gc) GC_STATUS="$2"; shift 2 ;;
+    --gd) GD_STATUS="$2"; shift 2 ;;
     *) shift ;;
   esac
 done
+
+# Auto-derive GC_STATUS from --max-cc
+if [[ "$MAX_CC" -gt 15 ]]; then
+  GC_STATUS="BLOCKER"
+elif [[ "$MAX_CC" -gt 10 ]]; then
+  GC_STATUS="WARN"
+fi
+
+# Auto-derive VERDICT if not explicitly overridden and any gate failed/blocked
+if [[ "$VERDICT_EXPLICIT" == false ]]; then
+  if [[ "$G0_STATUS" != "PASS" || "$G1_STATUS" != "PASS" || "$G2_STATUS" != "PASS" || "$GC_STATUS" == "BLOCKER" || "$GC_STATUS" == "FAIL" || "$GD_STATUS" != "PASS" ]]; then
+    VERDICT="CHANGES REQUESTED"
+  fi
+fi
 
 if [[ "$REPORT_TYPE" == "help" || -z "$PR_NUM" ]]; then
   cat <<EOF
 Usage:
   $(basename "$0") implementation --pr <PR_NUM> --role "<Role>" --scope "<Scope>" --files "<f1,f2>" --test-cmd "<cmd>" --test-output "<out>" [--dry-run]
-  $(basename "$0") review --pr <PR_NUM> --verdict "<APPROVED|CHANGES REQUESTED>" --max-cc <N> --security-summary "<summary>" --coverage "<cov>" [--dry-run]
+  $(basename "$0") review --pr <PR_NUM> --verdict "<APPROVED|CHANGES REQUESTED>" --max-cc <N> --security-summary "<summary>" --coverage "<cov>" [--g0 <PASS|FAIL|WARN>] [--g1 <PASS|FAIL|WARN>] [--g2 <PASS|FAIL|WARN>] [--gc <PASS|FAIL|WARN|BLOCKER>] [--gd <PASS|FAIL|WARN>] [--dry-run]
 EOF
   exit 0
 fi
@@ -89,11 +109,11 @@ elif [[ "$REPORT_TYPE" == "review" ]]; then
 #### Quality Gate Evaluation Matrix
 | Gate | Status | Evidence |
 | :--- | :---: | :--- |
-| **Gate G0 (Build, Lint & Format)** | PASS | \`0 errors, 0 warnings\` |
-| **Gate G1 (Tests & Coverage)** | PASS | \`$COVERAGE\` |
-| **Gate G2 (\`security-audit\`)** | PASS | $SECURITY_SUMMARY |
-| **Gate G-Complexity (\`cyclomatic-complexity\`)** | PASS | \`Max CC = $MAX_CC (<= 10 ceiling, nesting <= 2)\` |
-| **Gate G-Docs (Public Docs & Examples)** | PASS | \`100% public symbols documented\` |
+| **Gate G0 (Build, Lint & Format)** | $G0_STATUS | \`0 errors, 0 warnings\` |
+| **Gate G1 (Tests & Coverage)** | $G1_STATUS | \`$COVERAGE\` |
+| **Gate G2 (\`security-audit\`)** | $G2_STATUS | $SECURITY_SUMMARY |
+| **Gate G-Complexity (\`cyclomatic-complexity\`)** | $GC_STATUS | \`Max CC = $MAX_CC (<= 10 ceiling, nesting <= 2)\` |
+| **Gate G-Docs (Public Docs & Examples)** | $GD_STATUS | \`100% public symbols documented\` |
 
 #### Council President Verdict
 **GATE G-REVIEW $VERDICT**

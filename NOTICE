@@ -1,0 +1,16 @@
+divide-and-conquer-dev-plugin
+Copyright 2026 some-of-cs Contributors
+
+Licensed under the Apache License, Version 2.0.
+
+This product includes third-party works under their own licenses:
+
+1. Agency Agents Catalog (agents/agency-catalog/)
+   Source: https://github.com/msitarzewski/agency-agents
+   License: MIT
+   Copyright 2025 AgentLand Contributors
+
+2. Security Audit Skill (skills/security-audit/)
+   Source: https://github.com/cloudflare/security-audit-skill
+   License: MIT
+   Copyright 2025-2026 Cloudflare, Inc.

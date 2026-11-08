@@ -8,4 +8,4 @@ argument-hint: <init | status> [options]
 Arguments: `$ARGUMENTS`
 
 1. Load `skills/github-projects-kanban/SKILL.md`.
-2. Execute `./scripts/gh-kanban-sync.sh $ARGUMENTS` to update the visual **GitHub Projects** Kanban board (`Todo`, `In Progress`, `In Review / PR Open`, `Merged`) and `.agents/checkpoints/<module-id>/checkpoint.json`.
+2. Execute `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/gh-kanban-sync.sh $ARGUMENTS` to update the visual **GitHub Projects** Kanban board (`Todo`, `In Progress`, `In Review / PR Open`, `Merged`) and `.agents/checkpoints/<module-id>/checkpoint.json`.

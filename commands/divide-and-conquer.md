@@ -10,7 +10,7 @@ Target specification or module: `$ARGUMENTS`
 Follow these steps strictly in order:
 
 1. **Gate 0 (`preflight-git-gh` skill)**:
-   - Run `./scripts/preflight-check.sh` to verify that both `git` and `gh` exist and `gh auth status` is authenticated. Do not proceed if either tool is missing.
+   - Run `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/preflight-check.sh` to verify that both `git` and `gh` exist and `gh auth status` is authenticated. Do not proceed if either tool is missing.
 2. **State Reconciliation & Quota Sentinel**:
    - Inspect `.agents/checkpoints/` (`checkpoint.json`), `git worktree list`, and `gh pr list --state all` so zero completed or active tasks are duplicated.
    - Ensure the single-profile `quota-sentinel` agent is active.
@@ -23,5 +23,5 @@ Follow these steps strictly in order:
    - Run parallel Code Reviewing Councils (`security-audit` from `cloudflare/security-audit-skill` + `cyclomatic-complexity`) across every Unit, Story, and Module PR.
    - If any issue is flagged at the Story or Module level, spawn a dedicated **`patch-implementer`** subagent (`patch/*` branch & PR) and re-verify until 0 issues remain.
 6. **In-PR Conversation Reporting & GitHub Projects Kanban (`github-projects-kanban` skill)**:
-   - Post all Implementation Reports, Security Audits, Cyclomatic Complexity evaluations, and Gate G-Review verdicts directly to the GitHub PR conversations (`gh pr comment` / `./scripts/post-pr-report.sh`).
-   - Synchronize visual Kanban status with **GitHub Projects** (`./scripts/gh-kanban-sync.sh`) and `.agents/checkpoints/<module-id>/checkpoint.json`.
+   - Post all Implementation Reports, Security Audits, Cyclomatic Complexity evaluations, and Gate G-Review verdicts directly to the GitHub PR conversations (`gh pr comment` / `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/post-pr-report.sh`).
+   - Synchronize visual Kanban status with **GitHub Projects** (`${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/gh-kanban-sync.sh`) and `.agents/checkpoints/<module-id>/checkpoint.json`.

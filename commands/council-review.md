@@ -15,5 +15,5 @@ Target Pull Request: `$ARGUMENTS`
    - **Gate G2 (`security-audit`)**: Full security audit across applicable attack classes, secret hygiene, constant-time crypto, and input bounds.
    - **Gate G-Complexity (`cyclomatic-complexity`)**: Measure per-function $CC = 1 + \sum \text{decision points}$ ($CC \le 6$ target, $CC \le 10$ ceiling, $CC > 15$ hard blocker, max nesting $\le 2$).
    - **Gate G-Docs**: Public API docstrings, examples, and README.
-4. Post the complete audit report and `GATE G-REVIEW APPROVED` or `CHANGES REQUESTED` verdict directly to the GitHub PR conversation using `gh pr comment $ARGUMENTS --body-file <tmpfile>` (or `./scripts/post-pr-report.sh review --pr $ARGUMENTS ...`).
+4. Post the complete audit report and `GATE G-REVIEW APPROVED` or `CHANGES REQUESTED` verdict directly to the GitHub PR conversation using `gh pr comment $ARGUMENTS --body-file <tmpfile>` (or `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/post-pr-report.sh review --pr $ARGUMENTS ...`).
 5. If changes are requested on a Story or Module PR, instruct the Leader to spawn a dedicated **`patch-implementer`** subagent (`patch/*` branch & PR).

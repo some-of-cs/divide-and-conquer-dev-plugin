@@ -8,7 +8,7 @@
           {
             "name": "verify-git-and-gh-preflight",
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT:-.}/scripts/preflight-check.sh --quiet",
+            "command": "${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/preflight-check.sh --quiet",
             "timeout": 10
           }
         ]
