@@ -9,6 +9,7 @@
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](plugin.json)
 [![Model Family](https://img.shields.io/badge/Optimized%20For-Gemini%20Flash%20Family-8E75B2.svg)](#token-consumption--gemini-flash-family-optimization)
 [![Agency Agents](https://img.shields.io/badge/Agency%20Agents-283%20Bundled%20(18%20Divisions)-22C55E.svg)](https://github.com/msitarzewski/agency-agents)
+[![Security Audit Skill](https://img.shields.io/badge/Security%20Audit-cloudflare%2Fsecurity--audit--skill-F38020.svg)](https://github.com/cloudflare/security-audit-skill)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%99%A5-ff69b4.svg)](https://github.com/sponsors/some-of-cs)
 
@@ -174,7 +175,7 @@ All skills used by the Orchestrators and Code Reviewing Councils are included in
 | **[`divide-and-conquer-orchestrator`](skills/divide-and-conquer-orchestrator/SKILL.md)** | Manages parallel `.worktrees/`, 3m/1m watchdogs, streaming PRs, and cascading `gh pr merge`. |
 | **[`code-review-council`](skills/code-review-council/SKILL.md)** | Runs parallel Multi-Council reviews (Gates G0, G1, G2, G-Complexity, G-Docs, G-Review) & `patch-implementer` loops. |
 | **[`cyclomatic-complexity`](skills/cyclomatic-complexity/SKILL.md)** | **Gate G-Complexity**: Language-agnostic $CC = 1 + \sum \text{decision points}$ ($CC \le 6$ target, $\le 10$ ceiling, $>15$ hard merge blocker, nesting $\le 2$). |
-| **[`security-audit`](skills/security-audit/SKILL.md)** | **Gate G2**: Constant-time crypto, secret redaction, payload bounds, OWASP Top 10, and statutory compliance audit. |
+| **[`security-audit`](skills/security-audit/SKILL.md)** | **Gate G2**: Full **[`cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill)** suite (`RECONNAISSANCE.md`, `HUNTING.md`, `ATTACK-CLASSES.md`, 11 domain playbooks, `report-schema.json`, `validate-findings.cjs`, `validate-coverage-ledger.cjs`). |
 | **[`github-projects-kanban`](skills/github-projects-kanban/SKILL.md)** | Syncs visual Kanban status with **GitHub Projects** (`gh project`) + `.agents/checkpoints/` and posts all reports to **PR conversations**. |
 | **[`agency-roster-selector`](skills/agency-roster-selector/SKILL.md)** | Interactive/CLI selector for all 283 agents across 18 divisions from `msitarzewski/agency-agents`. |
 
@@ -324,21 +325,34 @@ divide-and-conqure-dev-plugin/
 
 ---
 
-## Acknowledgments & Special Thanks to `msitarzewski/agency-agents`
+## Acknowledgments & Special Thanks
 
 <div align="center">
 
-### 🙏 Huge Thanks to [`msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents)
+### 🙏 Huge Thanks to [`msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) & [`cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill)
 
 [![Agency Agents Repo](https://img.shields.io/badge/GitHub-msitarzewski%2Fagency--agents-181717?style=for-the-badge&logo=github)](https://github.com/msitarzewski/agency-agents)
+[![Cloudflare Security Audit Skill](https://img.shields.io/badge/GitHub-cloudflare%2Fsecurity--audit--skill-F38020?style=for-the-badge&logo=cloudflare)](https://github.com/cloudflare/security-audit-skill)
 
 </div>
+
+### 1. Special Thanks to [`msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents)
 
 A **massive thank you** to **[`@msitarzewski`](https://github.com/msitarzewski)** and all contributors to **[`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents)**!
 
 `divide-and-conqure-dev-plugin` directly depends on **The Agency** (`msitarzewski/agency-agents`) for its pluggable roster of **283 specialist AI agents across 18 divisions** (`engineering`, `security`, `testing`, `design`, `product`, `project-management`, `game-development`, `spatial-computing`, `finance`, `healthcare`, `gis`, `specialized`, `research`, `academic`, `marketing`, `paid-media`, `sales`, and `support`). Without their comprehensive, battle-tested collection of specialist agent personas and Antigravity skill integrations, making this Divide-and-Conquer orchestration engine truly universal across every programming language, framework, and industry would not have been possible.
 
 👉 **Please visit and star [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) to support their work!**
+
+### 2. Special Thanks to [`cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill)
+
+A **massive thank you** to **[Cloudflare](https://github.com/cloudflare)** and the authors of **[`https://github.com/cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill)**!
+
+Our Code Reviewing Councils depend directly on the complete **`cloudflare/security-audit-skill`** (bundled in [`skills/security-audit/`](skills/security-audit/SKILL.md)) for **Gate G2** security reviews, vulnerability reconnaissance (`RECONNAISSANCE.md`), variant hunting (`HUNTING.md`), attack-class modeling (`ATTACK-CLASSES.md`), domain-specific security playbooks (`WEB-PROTOCOL-AND-AUTH.md`, `MEMORY-SAFETY-AND-BINARY.md`, `AI-AND-LLM.md`, `CLOUD-AND-DEPLOYMENT.md`, `SUPPLY-CHAIN-AND-RELEASE.md`, and more), and automated coverage/finding validation (`validate-coverage-ledger.cjs`, `validate-findings.cjs`). Their rigorous methodology ensures every Unit, Patch, Story, and Module PR undergoes production-grade security verification before merge.
+
+👉 **Please visit and star [`https://github.com/cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill) to support their work!**
+
+---
 
 - Flagship real-world architectural validation powered by **[`some-stripe`](https://github.com/some-of-cs/some-stripe)** (`v0.8.0`).
 
