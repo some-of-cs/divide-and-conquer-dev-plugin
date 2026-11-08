@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conqure-dev-plugin — GitHub Projects v2 Kanban & Checkpoint Sync
+# divide-and-conquer-dev-plugin — GitHub Projects v2 Kanban & Checkpoint Sync
 # Replaces local KANBAN.md files with GitHub Projects + .agents/checkpoints/
 # ==============================================================================
 set -euo pipefail

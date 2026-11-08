@@ -1,6 +1,6 @@
 # Reference 01: Mandatory `git` & `gh` Preflight Gate
 
-Before the **`divide-and-conqure-dev-plugin`** starts any decomposition, worktree creation, or subagent orchestration, it enforces **Gate 0 (Environment & Tooling Preflight)**.
+Before the **`divide-and-conquer-dev-plugin`** starts any decomposition, worktree creation, or subagent orchestration, it enforces **Gate 0 (Environment & Tooling Preflight)**.
 
 ## Why `git` and `gh` Are Mandatory
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conqure-dev-plugin — Gate 0 Preflight Check (git & gh CLI)
+# divide-and-conquer-dev-plugin — Gate 0 Preflight Check (git & gh CLI)
 # Verifies that both `git` and `gh` exist and are authenticated before starting.
 # ==============================================================================
 set -euo pipefail
@@ -27,7 +27,7 @@ log() {
 }
 
 fail() {
-  echo "❌ [divide-and-conqure-dev-plugin] PREFLIGHT FAILED: $*" >&2
+  echo "❌ [divide-and-conquer-dev-plugin] PREFLIGHT FAILED: $*" >&2
   exit 1
 }
 
@@ -35,7 +35,7 @@ log "🔍 [Gate 0 Preflight] Checking required CLI tools (git, gh)..."
 
 # 1. Verify git exists
 if ! command -v git >/dev/null 2>&1; then
-  fail "'git' is not installed or not on PATH. Install Git (>= 2.30) before starting divide-and-conqure-dev-plugin."
+  fail "'git' is not installed or not on PATH. Install Git (>= 2.30) before starting divide-and-conquer-dev-plugin."
 fi
 
 GIT_VERSION="$(git --version)"
@@ -48,7 +48,7 @@ fi
 
 # 3. Verify gh (GitHub CLI) exists
 if ! command -v gh >/dev/null 2>&1; then
-  fail "'gh' (GitHub CLI) is not installed or not on PATH. Install from https://cli.github.com/ before starting divide-and-conqure-dev-plugin."
+  fail "'gh' (GitHub CLI) is not installed or not on PATH. Install from https://cli.github.com/ before starting divide-and-conquer-dev-plugin."
 fi
 
 GH_VERSION="$(gh --version | head -n 1)"
@@ -62,4 +62,4 @@ if [ "$SKIP_AUTH" = false ]; then
   log "  ✅ GitHub CLI (gh) is authenticated"
 fi
 
-log "✅ [Gate 0 Preflight] All required tools (git, gh) verified. Ready to start divide-and-conqure-dev-plugin."
+log "✅ [Gate 0 Preflight] All required tools (git, gh) verified. Ready to start divide-and-conquer-dev-plugin."

@@ -1,4 +1,4 @@
-# divide-and-conqure-dev-plugin
+# divide-and-conquer-dev-plugin
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%99%A5-ff69b4.svg)](https://github.com/sponsors/some-of-cs)
 
-[Overview](#why-divide-and-conqure-dev-plugin) •
+[Overview](#why-divide-and-conquer-dev-plugin) •
 [Token & Model Guidance](#token-consumption--gemini-flash-family-optimization) •
 [Prerequisites (`git` & `gh`)](#prerequisites-mandatory-git--gh-preflight-gate) •
 [Monolith $\to$ Units Matrix](#from-monolithic-docs-to-non-blocking-implementation-units) •
@@ -29,11 +29,11 @@
 
 ---
 
-## Why `divide-and-conqure-dev-plugin`?
+## Why `divide-and-conquer-dev-plugin`?
 
 Single-agent coding workflows break down on large specifications: context windows fill up with compiler noise, sequential task execution takes hours, unreviewed commits introduce regressions, and local status files (`KANBAN.md`) create endless merge conflicts.
 
-**`divide-and-conqure-dev-plugin`** is a **language-, framework-, and product-agnostic** Google Antigravity plugin that turns any monolithic specification into a self-governing, parallel multi-agent software factory:
+**`divide-and-conquer-dev-plugin`** is a **language-, framework-, and product-agnostic** Google Antigravity plugin that turns any monolithic specification into a self-governing, parallel multi-agent software factory:
 
 1. **Monolithic Docs $\to$ Modules $\to$ User Stories $\to$ Dynamic $K$ Implementation Units**:
    - Systematically decomposes huge PRDs, RFCs, or research documents into bounded **Modules**, cohesive **User Stories**, and a **dynamically calculated number ($K \in [1, N]$) of pure-implementation vertical slices** using a quantitative **Unit Sizing Decision Matrix**.
@@ -185,7 +185,7 @@ All skills used by the Orchestrators and Code Reviewing Councils are included in
 
 ## Choosing Your Project Agents (`msitarzewski/agency-agents`)
 
-Because `divide-and-conqure-dev-plugin` is completely generic across all languages and domains, it bundles **all 18 divisions and 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) under [`agents/agency-catalog/`](agents/agency-catalog/):
+Because `divide-and-conquer-dev-plugin` is completely generic across all languages and domains, it bundles **all 18 divisions and 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) under [`agents/agency-catalog/`](agents/agency-catalog/):
 
 - **Engineering (66 agents)**: `backend-architect`, `frontend-developer`, `ai-engineer`, `devops-automator`, `database-optimizer`, `mobile-app-builder`, `api-platform-engineer`, `code-reviewer`, `git-workflow-master`, and more.
 - **Security (12 agents)**: `application-security-engineer`, `ai-generated-code-security-auditor`, `penetration-tester`, `cloud-security-architect`, `compliance-auditor`, `cryptography-engineer`.
@@ -223,8 +223,8 @@ This repository is structured as a **Universal Tri-Platform Plugin** ready for d
 1. **Native Antigravity Plugin Manifests**: [`plugin.json`](plugin.json), [`.antigravity-plugin/plugin.json`](.antigravity-plugin/plugin.json), and [`.gemini-plugin/plugin.json`](.gemini-plugin/plugin.json).
 2. **Install into any workspace**:
    ```bash
-   git clone https://github.com/some-of-cs/divide-and-conqure-dev-plugin.git
-   ./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+   git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git
+   ./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
      --tool antigravity \
      --target /path/to/your/project \
      --divisions engineering,security,testing
@@ -235,8 +235,8 @@ This repository is structured as a **Universal Tri-Platform Plugin** ready for d
 1. **Native Claude Code Manifests**: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
 2. **Install directly from the Claude Code Marketplace**:
    ```text
-   /plugin marketplace add some-of-cs/divide-and-conqure-dev-plugin
-   /plugin install divide-and-conqure-dev-plugin@divide-and-conqure-dev-marketplace
+   /plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
+   /plugin install divide-and-conquer-dev-plugin@divide-and-conquer-dev-marketplace
    ```
 3. **Included Claude Code Slash Commands ([`commands/`](commands/))**:
    - `/divide-and-conquer <spec-or-module>` — Execute the full Divide-and-Conquer workflow
@@ -250,7 +250,7 @@ This repository is structured as a **Universal Tri-Platform Plugin** ready for d
 1. **Native Codex Manifests**: [`codex.json`](codex.json), [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json), and root [`AGENTS.md`](AGENTS.md).
 2. **Install into any Codex workspace**:
    ```bash
-   ./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+   ./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
      --tool codex \
      --target /path/to/your/project \
      --divisions engineering,security,testing
@@ -259,7 +259,7 @@ This repository is structured as a **Universal Tri-Platform Plugin** ready for d
 ### Option D: Install for All Platforms Simultaneously (`--tool all`)
 
 ```bash
-./divide-and-conqure-dev-plugin/scripts/install-plugin.sh \
+./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
   --tool all \
   --target /path/to/your/project \
   --divisions engineering,security,testing
@@ -278,7 +278,7 @@ cd /path/to/your/project
 Then prompt your agent (or run `/divide-and-conquer docs/SPECIFICATION.md`):
 
 ```text
-Using the divide-and-conqure-dev-plugin rules and the spec-decomposition skill:
+Using the divide-and-conquer-dev-plugin rules and the spec-decomposition skill:
 1. Run ./scripts/preflight-check.sh to verify git and gh are ready.
 2. Decompose docs/SPECIFICATION.md into bounded Modules, User Stories, and dynamically sized, non-blocking Implementation Units (using the Unit Sizing Decision Matrix).
 3. Sync the roadmap with our GitHub Project Kanban board and .agents/checkpoints/checkpoint.json.
@@ -306,7 +306,7 @@ Explore the example artifacts:
 ## Repository Structure
 
 ```text
-divide-and-conqure-dev-plugin/
+divide-and-conquer-dev-plugin/
 ├── plugin.json                                     # Google Antigravity Marketplace Manifest
 ├── .antigravity-plugin/plugin.json                 # Antigravity loader manifest
 ├── .gemini-plugin/plugin.json                      # Gemini CLI plugin manifest
@@ -350,7 +350,7 @@ divide-and-conqure-dev-plugin/
 
 ## Backers & Corporate Sponsors
 
-`divide-and-conqure-dev-plugin` is an independent, community-driven open-source project built for the Google Antigravity ecosystem. If your engineering team or company relies on this plugin to orchestrate autonomous multi-agent software delivery and automated code review councils, corporate sponsorship directly funds continuous maintenance, new orchestration skills, and expanded agent integrations.
+`divide-and-conquer-dev-plugin` is an independent, community-driven open-source project built for the Google Antigravity ecosystem. If your engineering team or company relies on this plugin to orchestrate autonomous multi-agent software delivery and automated code review councils, corporate sponsorship directly funds continuous maintenance, new orchestration skills, and expanded agent integrations.
 
 <div align="center">
 
@@ -388,7 +388,7 @@ divide-and-conqure-dev-plugin/
 
 A **massive thank you** to **[`@msitarzewski`](https://github.com/msitarzewski)** and all contributors to **[`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents)**!
 
-`divide-and-conqure-dev-plugin` directly depends on **The Agency** (`msitarzewski/agency-agents`) for its pluggable roster of **283 specialist AI agents across 18 divisions** (`engineering`, `security`, `testing`, `design`, `product`, `project-management`, `game-development`, `spatial-computing`, `finance`, `healthcare`, `gis`, `specialized`, `research`, `academic`, `marketing`, `paid-media`, `sales`, and `support`). Without their comprehensive, battle-tested collection of specialist agent personas and Antigravity skill integrations, making this Divide-and-Conquer orchestration engine truly universal across every programming language, framework, and industry would not have been possible.
+`divide-and-conquer-dev-plugin` directly depends on **The Agency** (`msitarzewski/agency-agents`) for its pluggable roster of **283 specialist AI agents across 18 divisions** (`engineering`, `security`, `testing`, `design`, `product`, `project-management`, `game-development`, `spatial-computing`, `finance`, `healthcare`, `gis`, `specialized`, `research`, `academic`, `marketing`, `paid-media`, `sales`, and `support`). Without their comprehensive, battle-tested collection of specialist agent personas and Antigravity skill integrations, making this Divide-and-Conquer orchestration engine truly universal across every programming language, framework, and industry would not have been possible.
 
 👉 **Please visit and star [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) to support their work!**
 

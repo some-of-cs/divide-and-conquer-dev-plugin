@@ -1,5 +1,5 @@
 {
-  "name": "divide-and-conqure-dev-plugin",
+  "name": "divide-and-conquer-dev-plugin",
   "version": "1.0.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for OpenAI Codex, Google Antigravity, and Claude Code.",
   "instructions": "./AGENTS.md",

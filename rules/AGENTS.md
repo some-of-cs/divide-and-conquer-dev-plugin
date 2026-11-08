@@ -1,6 +1,6 @@
 # Divide-and-Conquer Development Plugin — Workspace Agent Rules (`AGENTS.md`)
 
-Welcome to the **`divide-and-conqure-dev-plugin`** governance engine for **Google Antigravity**. Every AI agent, subagent, leader, implementer, and reviewing council operating in a workspace powered by this plugin MUST strictly obey these invariants.
+Welcome to the **`divide-and-conquer-dev-plugin`** governance engine for **Google Antigravity**. Every AI agent, subagent, leader, implementer, and reviewing council operating in a workspace powered by this plugin MUST strictly obey these invariants.
 
 > [!IMPORTANT]
 > **Model & Token Profile**: This plugin is engineered to produce **zero-debt, production-grade software** through massive parallelism, multi-council code review, and automated self-correction loops. Because this architecture spawns concurrent subagents and iterative review councils, it **consumes a high volume of tokens** and is **primarily designed and optimized for the Gemini Flash family** (e.g., `gemini-2.5-flash` / `gemini-3-flash`). It operates on a **single profile at a time** protected by an autonomous `quota-sentinel`.

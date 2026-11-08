@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conqure-dev-plugin — In-PR Conversation Reporter
+# divide-and-conquer-dev-plugin — In-PR Conversation Reporter
 # Posts Implementation, Security Audit, Complexity, and Council Sign-Off reports
 # directly to GitHub Pull Request conversations (zero local report file clutter).
 # ==============================================================================
@@ -24,6 +24,11 @@ VERDICT="APPROVED"
 MAX_CC="4"
 SECURITY_SUMMARY="0 Critical/High/Medium issues; input bounds and secret redaction verified."
 COVERAGE=">= 90% lines, >= 85% branches"
+G0_STATUS="PASS"
+G1_STATUS="PASS"
+G2_STATUS="PASS"
+GC_STATUS="PASS"
+GD_STATUS="PASS"
 DRY_RUN=false
 
 while [[ $# -gt 0 ]]; do
@@ -72,7 +77,7 @@ if [[ "$REPORT_TYPE" == "implementation" ]]; then
 ${TEST_OUTPUT:-All unit, doctest, and linter checks passed with 0 warnings.}
 \`\`\`
 
-*Posted automatically by \`divide-and-conqure-dev-plugin\` (In-PR Conversation Audit Trail).*
+*Posted automatically by \`divide-and-conquer-dev-plugin\` (In-PR Conversation Audit Trail).*
 EOF
 elif [[ "$REPORT_TYPE" == "review" ]]; then
   cat > "$TMP_BODY" <<EOF

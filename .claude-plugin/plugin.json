@@ -1,13 +1,13 @@
 {
-  "name": "divide-and-conqure-dev-plugin",
+  "name": "divide-and-conquer-dev-plugin",
   "version": "1.0.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for Google Antigravity, Claude Code, and OpenAI Codex. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees, governed by multi-council code review, patch-implementer self-correction loops, GitHub Projects Kanban tracking, in-PR conversation reporting, cloudflare/security-audit-skill, and 283 specialist agents from msitarzewski/agency-agents.",
   "author": {
     "name": "some-of-cs",
-    "url": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin"
+    "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"
   },
-  "homepage": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
-  "repository": "https://github.com/some-of-cs/divide-and-conqure-dev-plugin",
+  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+  "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "license": "Apache-2.0",
   "keywords": [
     "antigravity-plugin",

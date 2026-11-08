@@ -1,6 +1,6 @@
 # Sample In-PR Conversation Reports (Zero Local Report Files)
 
-In `divide-and-conqure-dev-plugin`, agents **never** clutter the repository with local `.agents/reports/*.md` files. Instead, every Implementation Report, Security Audit, Cyclomatic Complexity evaluation, `patch-implementer` remediation summary, and Council President sign-off is posted directly as a comment on the GitHub Pull Request conversation (`gh pr comment <PR> --body "..."`).
+In `divide-and-conquer-dev-plugin`, agents **never** clutter the repository with local `.agents/reports/*.md` files. Instead, every Implementation Report, Security Audit, Cyclomatic Complexity evaluation, `patch-implementer` remediation summary, and Council President sign-off is posted directly as a comment on the GitHub Pull Request conversation (`gh pr comment <PR> --body "..."`).
 
 Below are real examples modeled after the `some-stripe` PR conversation audit trail.
 

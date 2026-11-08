@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conqure-dev-plugin — Universal Tri-Platform Plugin Installer
+# divide-and-conquer-dev-plugin — Universal Tri-Platform Plugin Installer
 # Supports Google Antigravity, Claude Code, and OpenAI Codex CLI.
 # Enforces Gate 0 (git + gh verification) before installing the plugin, skills,
 # slash commands, core orchestrators, and selected msitarzewski/agency-agents.
@@ -21,7 +21,7 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") [OPTIONS]
 
-Install the divide-and-conqure-dev-plugin into a target project workspace for:
+Install the divide-and-conquer-dev-plugin into a target project workspace for:
   • Google Antigravity (.agents/, AGENTS.md)
   • Claude Code        (.claude/, CLAUDE.md, commands/, agents/, skills/)
   • OpenAI Codex CLI   (.codex/, AGENTS.md, skills/)
@@ -53,7 +53,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 echo "======================================================================"
-echo "  Installing divide-and-conqure-dev-plugin (Platform: $TOOL_PLATFORM)"
+echo "  Installing divide-and-conquer-dev-plugin (Platform: $TOOL_PLATFORM)"
 echo "======================================================================"
 
 # 1. Mandatory Gate 0 check: Ensure git and gh exist before starting!
@@ -109,7 +109,7 @@ if [[ "$TOOL_PLATFORM" == "codex" || "$TOOL_PLATFORM" == "all" ]]; then
 fi
 
 echo ""
-echo "✅ divide-and-conqure-dev-plugin installed into: $TARGET_DIR"
+echo "✅ divide-and-conquer-dev-plugin installed into: $TARGET_DIR"
 echo "   • Antigravity & Codex Rules: $TARGET_DIR/AGENTS.md"
 echo "   • Claude Code Rules:         $TARGET_DIR/CLAUDE.md"
 echo "   • Reviewing Council Skills:  $TARGET_DIR/.agents/skills/ (includes cloudflare/security-audit-skill)"
