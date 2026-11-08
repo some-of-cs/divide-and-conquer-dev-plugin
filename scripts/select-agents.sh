@@ -2,7 +2,8 @@
 # ==============================================================================
 # divide-and-conquer-dev-plugin — Agency Roster Selector (msitarzewski/agency-agents)
 # Enables users to browse, search, and install any of the 283 agents across all
-# 18 divisions from https://github.com/msitarzewski/agency-agents
+# 18 divisions from https://github.com/msitarzewski/agency-agents or target an
+# entire industry domain with a single --field <FIELD_PROFILE> flag.
 # ==============================================================================
 set -euo pipefail
 
@@ -11,6 +12,7 @@ PLUGIN_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 CATALOG_DIR="$PLUGIN_ROOT/agents/agency-catalog"
 RAW_DIR="$CATALOG_DIR/raw-agents"
 SKILLS_DIR="$CATALOG_DIR/antigravity-skills"
+FIELDS_JSON="$PLUGIN_ROOT/profiles/fields.json"
 
 # Gate 0 check: Ensure git and gh exist before running plugin tooling
 "$SCRIPT_DIR/preflight-check.sh" --quiet --skip-auth
@@ -20,6 +22,65 @@ ACTION=""
 DIVISIONS_CSV=""
 AGENTS_CSV=""
 SEARCH_TERM=""
+FIELD_PROFILE=""
+
+# Map --field presets to divisions in scripts/select-agents.sh
+resolve_field_divisions() {
+  case "$1" in
+    software|dev)       echo "engineering,security,testing" ;;
+    product|design)     echo "product,design,project-management,research" ;;
+    marketing|growth)   echo "marketing,paid-media,sales,design" ;;
+    finance|legal)      echo "finance,specialized,support" ;;
+    research|academic)  echo "academic,research,specialized" ;;
+    healthcare|medical) echo "healthcare,security,academic,support" ;;
+    game-dev|spatial)   echo "game-development,spatial-computing,design,testing" ;;
+    gis|geospatial)     echo "gis,engineering,testing" ;;
+    all)                echo "all" ;;
+    *) echo "Unknown field '$1'. Valid fields: software, product, marketing, finance, research, healthcare, game-dev, gis, all" >&2; exit 1 ;;
+  esac
+}
+
+canonical_field_name() {
+  case "$1" in
+    software|dev)       echo "software" ;;
+    product|design)     echo "product" ;;
+    marketing|growth)   echo "marketing" ;;
+    finance|legal)      echo "finance" ;;
+    research|academic)  echo "research" ;;
+    healthcare|medical) echo "healthcare" ;;
+    game-dev|spatial)   echo "game-dev" ;;
+    gis|geospatial)     echo "gis" ;;
+    all)                echo "all" ;;
+    *) echo "software" ;;
+  esac
+}
+
+write_field_profile() {
+  local field_arg="$1"
+  local target_root="$2"
+  local canon
+  canon="$(canonical_field_name "$field_arg")"
+  local divs
+  divs="$(resolve_field_divisions "$field_arg")"
+
+  mkdir -p "$target_root/.agents/profiles"
+  if [[ -f "$FIELDS_JSON" ]]; then
+    cp "$FIELDS_JSON" "$target_root/.agents/profiles/fields.json"
+  fi
+
+  if command -v jq >/dev/null 2>&1 && [[ -f "$FIELDS_JSON" ]]; then
+    jq --arg f "$canon" --arg requested "$field_arg" '.fields[$f] + {requested_field: $requested, registry_version: .schema_version}' "$FIELDS_JSON" > "$target_root/.agents/field-profile.json"
+  else
+    cat > "$target_root/.agents/field-profile.json" <<EOF
+{
+  "field": "$canon",
+  "requested_field": "$field_arg",
+  "divisions_csv": "$divs",
+  "registry_version": "1.1.0"
+}
+EOF
+  fi
+}
 
 usage() {
   cat <<EOF
@@ -29,6 +90,10 @@ Select and enable specialist AI agents from https://github.com/msitarzewski/agen
 (All 18 divisions / 283 specialist agents bundled).
 
 Options:
+  --field <FIELD>               Enable default divisions & rubric for an industry field:
+                                software | product | marketing | finance | research |
+                                healthcare | game-dev | gis | all
+  --list-fields                 List all supported --field targeting presets and divisions
   --list-divisions              List all 18 divisions and agent counts
   --list-agents [DIVISION]      List available agents (optionally filtered by division)
   --search <KEYWORD>            Search agents by name, division, or description
@@ -39,6 +104,8 @@ Options:
   -h, --help                    Show this help message
 
 Examples:
+  $(basename "$0") --list-fields
+  $(basename "$0") --field research --target /path/to/project
   $(basename "$0") --list-divisions
   $(basename "$0") --search "security"
   $(basename "$0") --divisions engineering,security,testing --target /path/to/project
@@ -48,6 +115,18 @@ EOF
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --field)
+      FIELD_PROFILE="$2"
+      RESOLVED_DIVS="$(resolve_field_divisions "$FIELD_PROFILE")"
+      if [[ "$RESOLVED_DIVS" == "all" ]]; then
+        ACTION="install-all"
+      else
+        ACTION="install-divisions"
+        DIVISIONS_CSV="$RESOLVED_DIVS"
+      fi
+      shift 2
+      ;;
+    --list-fields) ACTION="list-fields"; shift ;;
     --list-divisions) ACTION="list-divisions"; shift ;;
     --list-agents)
       ACTION="list-agents"
@@ -95,6 +174,24 @@ install_single_skill() {
 }
 
 case "$ACTION" in
+  list-fields)
+    echo "=========================================================================================="
+    echo "  Supported --field Targeting Presets (profiles/fields.json)"
+    echo "=========================================================================================="
+    printf "  %-14s | %-18s | %-48s\n" "FIELD FLAG" "ALIASES" "AUTO-ENABLED DIVISIONS"
+    echo "------------------------------------------------------------------------------------------"
+    printf "  %-14s | %-18s | %-48s\n" "software"   "software, dev"      "engineering,security,testing"
+    printf "  %-14s | %-18s | %-48s\n" "product"    "product, design"    "product,design,project-management,research"
+    printf "  %-14s | %-18s | %-48s\n" "marketing"  "marketing, growth"  "marketing,paid-media,sales,design"
+    printf "  %-14s | %-18s | %-48s\n" "finance"    "finance, legal"     "finance,specialized,support"
+    printf "  %-14s | %-18s | %-48s\n" "research"   "research, academic" "academic,research,specialized"
+    printf "  %-14s | %-18s | %-48s\n" "healthcare" "healthcare, medical" "healthcare,security,academic,support"
+    printf "  %-14s | %-18s | %-48s\n" "game-dev"   "game-dev, spatial"  "game-development,spatial-computing,design,testing"
+    printf "  %-14s | %-18s | %-48s\n" "gis"        "gis, geospatial"    "gis,engineering,testing"
+    printf "  %-14s | %-18s | %-48s\n" "all"        "all"                "All 18 divisions (283 specialist agents)"
+    echo "=========================================================================================="
+    ;;
+
   list-divisions)
     echo "======================================================================"
     echo "  Bundled Agency-Agents Divisions (msitarzewski/agency-agents)"
@@ -137,6 +234,10 @@ case "$ACTION" in
     ;;
 
   install-divisions)
+    if [[ -n "$FIELD_PROFILE" ]]; then
+      write_field_profile "$FIELD_PROFILE" "$TARGET_DIR"
+      echo "🎯 Configured field profile '$FIELD_PROFILE' -> divisions: $DIVISIONS_CSV"
+    fi
     IFS=',' read -ra DIVS <<< "$DIVISIONS_CSV"
     installed=0
     mkdir -p "$TARGET_DIR/.agents/agents" "$TARGET_DIR/.agents/skills"
@@ -175,6 +276,10 @@ case "$ACTION" in
     ;;
 
   install-all)
+    if [[ -n "$FIELD_PROFILE" ]]; then
+      write_field_profile "$FIELD_PROFILE" "$TARGET_DIR"
+      echo "🎯 Configured field profile '$FIELD_PROFILE' -> all 18 divisions"
+    fi
     echo "📦 Enabling ALL 283 agents across all 18 divisions into $TARGET_DIR/.agents/..."
     mkdir -p "$TARGET_DIR/.agents/skills" "$TARGET_DIR/.agents/agents"
     cp -r "$SKILLS_DIR"/agency-* "$TARGET_DIR/.agents/skills/"

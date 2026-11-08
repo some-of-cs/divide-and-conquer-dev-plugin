@@ -1,6 +1,6 @@
 {
   "name": "divide-and-conquer-dev-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for OpenAI Codex CLI, Google Antigravity, and Claude Code. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees.",
   "author": {
     "name": "some-of-cs",
@@ -9,7 +9,10 @@
   "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
   "license": "Apache-2.0",
   "requirements": {
-    "cli": ["git", "gh"]
+    "cli": [
+      "git",
+      "gh"
+    ]
   },
   "instructions": "../AGENTS.md",
   "skills": "../skills",

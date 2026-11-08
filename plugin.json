@@ -1,6 +1,6 @@
 {
   "name": "divide-and-conquer-dev-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for Google Antigravity. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees, governed by multi-council code review, patch-implementer self-correction loops, GitHub Projects Kanban tracking, in-PR conversation reporting, and a 283-agent roster from msitarzewski/agency-agents.",
   "author": {
     "name": "some-of-cs",
@@ -22,7 +22,10 @@
     "security-audit"
   ],
   "requirements": {
-    "cli": ["git", "gh"],
+    "cli": [
+      "git",
+      "gh"
+    ],
     "recommendedModelFamily": "gemini-flash"
   },
   "skills": "./skills",

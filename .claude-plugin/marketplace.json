@@ -5,15 +5,15 @@
     "url": "https://github.com/some-of-cs"
   },
   "metadata": {
-    "description": "Official marketplace catalog for divide-and-conquer-dev-plugin — Autonomous Divide-and-Conquer multi-agent engineering workflow for Google Antigravity, Claude Code, and OpenAI Codex.",
-    "version": "1.0.0"
+    "description": "Official marketplace catalog for divide-and-conquer-dev-plugin \u2014 Autonomous Divide-and-Conquer multi-agent engineering workflow for Google Antigravity, Claude Code, and OpenAI Codex.",
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "divide-and-conquer-dev-plugin",
       "source": "./",
       "description": "Transform monolithic specs into parallel Modules, User Stories, and non-blocking Implementation Units in isolated Git worktrees with Multi-Council Code Review, mandatory patch-implementer loops, GitHub Projects Kanban, in-PR conversation reporting, cloudflare/security-audit-skill, and 283 specialist agents from msitarzewski/agency-agents.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "some-of-cs",
         "url": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin"

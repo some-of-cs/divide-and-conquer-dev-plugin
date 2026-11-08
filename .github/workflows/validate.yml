@@ -23,6 +23,7 @@ jobs:
                    .claude-plugin/plugin.json .claude-plugin/marketplace.json \
                    .antigravity-plugin/plugin.json .gemini-plugin/plugin.json \
                    .codex-plugin/plugin.json \
+                   profiles/fields.json \
                    agents/agency-catalog/divisions.json \
                    examples/some-stripe/sample-checkpoint.json; do
             if [ -f "$f" ]; then
@@ -83,10 +84,13 @@ jobs:
             bash -n "$script" && echo "✅ $script — syntax OK" || echo "❌ $script — syntax error"
           done
 
-      - name: Run preflight-check (skip auth)
+      - name: Run preflight-check and --field smoke tests (skip auth)
         run: |
-          chmod +x scripts/preflight-check.sh
+          chmod +x scripts/*.sh
           ./scripts/preflight-check.sh --skip-auth
+          ./scripts/select-agents.sh --list-fields
+          ./scripts/post-pr-report.sh review --pr 1 --field software --dry-run
+          ./scripts/post-pr-report.sh review --pr 1 --field research --dry-run
 
   license-check:
     name: License Validation

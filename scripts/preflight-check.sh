@@ -42,7 +42,7 @@ GIT_VERSION="$(git --version)"
 log "  ✅ Found $GIT_VERSION"
 
 # 2. Verify git worktree support
-if ! git worktree --help >/dev/null 2>&1; then
+if ! git worktree list >/dev/null 2>&1 && ! git worktree --help >/dev/null 2>&1 && ! (git worktree -h 2>&1 | grep -q 'git worktree'); then
   fail "'git worktree' subcommand is unavailable. Upgrade Git to >= 2.30."
 fi
 

@@ -1,17 +1,33 @@
 ---
 name: agency-roster-selector
-description: Select, filter, and enable specialist AI agents from the bundled msitarzewski/agency-agents catalog (all 18 divisions and 283 agents) tailored to any programming language, framework, or product domain.
+description: Select, filter, and enable specialist AI agents from the bundled msitarzewski/agency-agents catalog (all 18 divisions and 283 agents) using --field industry presets (software, product, marketing, finance, research, healthcare, game-dev, gis, all), divisions, or individual agent slugs.
 ---
 
 # Agency Roster Selector Skill (`msitarzewski/agency-agents`)
 
-The **`divide-and-conquer-dev-plugin`** is completely **language-, framework-, and product-agnostic**. In addition to the 7 core orchestration agents (`Module Leader`, `Story Leader`, `Unit Implementer`, `patch-implementer`, `Code Reviewer Council President`, `Git Workflow Master`, `Quota Sentinel`), users can enable **any combination of the 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents).
+The **`divide-and-conquer-dev-plugin`** is completely **language-, framework-, and industry-agnostic**. In addition to the 7 core orchestration agents (`Module Leader`, `Story Leader`, `Unit Implementer`, `patch-implementer`, `Code Reviewer Council President`, `Git Workflow Master`, `Quota Sentinel`), users can enable **any combination of the 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) or target an entire industry domain with a single `--field <FIELD_PROFILE>` flag.
 
-All 18 divisions and all 283 Antigravity-converted skills are bundled directly inside `agents/agency-catalog/`.
+All 18 divisions, all 283 Antigravity-converted skills, and the central field registry (`profiles/fields.json`) are bundled directly in the plugin.
 
 ---
 
-## 1. Available Divisions (All 18 Divisions / 283 Agents Allowed)
+## 1. `--field` Industry Targeting Presets (`profiles/fields.json`)
+
+| `--field` Flag | Aliases | Auto-Enabled Divisions |
+| :--- | :--- | :--- |
+| **`software`** *(default)* | `software`, `dev` | `engineering,security,testing` |
+| **`product`** | `product`, `design` | `product,design,project-management,research` |
+| **`marketing`** | `marketing`, `growth` | `marketing,paid-media,sales,design` |
+| **`finance`** | `finance`, `legal` | `finance,specialized,support` |
+| **`research`** | `research`, `academic` | `academic,research,specialized` |
+| **`healthcare`** | `healthcare`, `medical` | `healthcare,security,academic,support` |
+| **`game-dev`** | `game-dev`, `spatial` | `game-development,spatial-computing,design,testing` |
+| **`gis`** | `gis`, `geospatial` | `gis,engineering,testing` |
+| **`all`** | `all` | All 18 divisions (all 283 specialist agents) |
+
+---
+
+## 2. Available Divisions (All 18 Divisions / 283 Agents Allowed)
 
 | Division Key | Display Name | Agent Examples |
 | :--- | :--- | :--- |
@@ -36,11 +52,17 @@ All 18 divisions and all 283 Antigravity-converted skills are bundled directly i
 
 ---
 
-## 2. How to Select & Enable Agents for Your Project
+## 3. How to Select & Enable Agents for Your Project
 
-Use `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh` to browse, filter, or install presets into your workspace's `.agents/agents/` and `.agents/skills/` directories:
+Use `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh` to browse, filter, or install field presets into your workspace's `.agents/agents/`, `.agents/skills/`, and `.agents/field-profile.json`:
 
 ```bash
+# List all --field presets and their auto-enabled divisions
+${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh --list-fields
+
+# Target an entire industry domain with a single --field flag (writes .agents/field-profile.json)
+${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh --field research --target /path/to/your/project
+
 # List all 18 divisions and agent counts
 ${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh --list-divisions
 
@@ -59,8 +81,8 @@ ${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/select-agents.sh --
 
 ---
 
-## 3. Mapping Selected Agents to the Divide-and-Conquer Tiers
+## 4. Mapping Selected Agents to the Divide-and-Conquer Tiers
 
-When the user selects their project roster, the plugin automatically wires them into two roles:
-1. **Unit & Patch Implementer Specialists**: Domain/language agents (e.g., `frontend-developer`, `backend-architect`, `ai-engineer`, `database-optimizer`, `unity-architect`) execute the parallel Implementation Units ($1..K$) and `patch-implementer` tasks.
-2. **Code Reviewing Council Specialists**: Quality & governance agents (e.g., `code-reviewer`, `application-security-engineer`, `api-tester`, `performance-benchmarker`, `accessibility-auditor`) form the parallel **Code Reviewing Councils** armed with `security-audit` and `cyclomatic-complexity`.
+When the user selects their project roster (via `--field`, `--divisions`, or `--agents`), the plugin automatically wires them into two roles:
+1. **Unit & Patch Implementer Specialists**: Domain/language agents (e.g., `frontend-developer`, `backend-architect`, `financial-analyst`, `research-synthesist`, `content-creator`, `unity-architect`) execute the parallel Implementation Units ($1..K$) and `patch-implementer` tasks.
+2. **Reviewing Council Specialists**: Quality & governance agents (e.g., `code-reviewer`, `application-security-engineer`, `compliance-auditor`, `statistician`, `brand-guardian`, `reality-checker`) form the parallel **Reviewing Councils** enforcing the active field's 6 quality gates (`profiles/fields.json`).

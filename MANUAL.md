@@ -4,7 +4,7 @@
 
 **The Official How-to-Use Guide for Google Antigravity, Claude Code & OpenAI Codex**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](#)
 [![Antigravity](https://img.shields.io/badge/Antigravity-Supported-4285F4.svg)](#google-antigravity)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Supported-D97757.svg)](#claude-code)
 [![Codex](https://img.shields.io/badge/OpenAI%20Codex-Supported-10A37F.svg)](#openai-codex-cli)
@@ -254,8 +254,8 @@ your-project/
 ```bash
 ./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
   --tool all \
-  --target /path/to/your/project \
-  --divisions engineering,security,testing
+  --field software \
+  --target /path/to/your/project
 ```
 
 This installs the Antigravity base layout plus Claude-specific and Codex-specific directories simultaneously.
@@ -278,6 +278,12 @@ cd /path/to/your/project
 Choose the agents that match your project's tech stack:
 
 ```bash
+# List all 8 industry --field presets (software, product, marketing, finance, research, healthcare, game-dev, gis)
+./scripts/select-agents.sh --list-fields
+
+# Enable an industry field preset
+./scripts/select-agents.sh --field software --target .
+
 # See all 18 available divisions
 ./scripts/select-agents.sh --list-divisions
 

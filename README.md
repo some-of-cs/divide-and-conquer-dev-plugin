@@ -8,7 +8,7 @@
 [![Antigravity Plugin](https://img.shields.io/badge/Antigravity-Marketplace%20Plugin-4285F4.svg)](plugin.json)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Marketplace%20Plugin-D97757.svg)](.claude-plugin/marketplace.json)
 [![OpenAI Codex Plugin](https://img.shields.io/badge/OpenAI%20Codex-CLI%20%26%20Skills-10A37F.svg)](codex.json)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](plugin.json)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](plugin.json)
 [![Model Family](https://img.shields.io/badge/Optimized%20For-Gemini%20Flash%20Family-8E75B2.svg)](#token-consumption--gemini-flash-family-optimization)
 [![Agency Agents](https://img.shields.io/badge/Agency%20Agents-283%20Bundled%20(18%20Divisions)-22C55E.svg)](https://github.com/msitarzewski/agency-agents)
 [![Security Audit Skill](https://img.shields.io/badge/Security%20Audit-cloudflare%2Fsecurity--audit--skill-F38020.svg)](https://github.com/cloudflare/security-audit-skill)
@@ -122,8 +122,8 @@ $$S_{\text{story}} = 0.35 D_1 + 0.25 D_2 + 0.20 D_3 + 0.20 D_4$$
 
 ### Two Non-Negotiable Unit Design Invariants
 
-1. **Pure Implementation Only (Zero Validation-Only Units)**:
-   - Every unit $1..K$ MUST implement production code plus its own unit tests.
+1. **Pure Deliverable Production Only (Zero Validation-Only Units)**:
+   - Every unit $1..K$ MUST produce real primary artifacts (source code + unit tests in software; drafted sections, models, or campaign assets + self-checks in non-software).
    - **Never** create a unit whose purpose is *"Unit $K$: Write integration tests or validate Units $1..(K-1)$"*. Story-level integration testing is performed by the Story Leader after all $K$ units merge.
 2. **Zero Inter-Unit Blocking (100% Parallel Execution)**:
    - Units $1..K$ own disjoint files/submodules (with any shared interfaces seeded on the story branch first) so **all $K$ Unit Implementers run simultaneously in parallel** without waiting on one another.
@@ -192,9 +192,30 @@ Because `divide-and-conquer-dev-plugin` is completely generic across all languag
 - **Testing (9 agents)**: `api-tester`, `performance-benchmarker`, `test-automation-engineer`, `accessibility-auditor`, `test-results-analyzer`.
 - **Design, Product, Project Management, Game Dev, Spatial Computing, Finance, Healthcare, GIS, Specialized, Research, Academic, Marketing, Paid Media, Sales, Support** (all 18 divisions included).
 
-Browse and enable the exact agents your project needs:
+### Universal `--field` Industry Targeting Presets (`profiles/fields.json`)
+
+Pass `--field <FIELD_PROFILE>` to `install-plugin.sh`, `select-agents.sh`, or `post-pr-report.sh` to dynamically configure the default `agency-agents` divisions, $D_1..D_4$ sizing metrics, and 6-Gate Reviewing Council rubric (stored in `.agents/field-profile.json`):
+
+| `--field` Flag | Auto-Enabled Divisions | $D_1$ (35% Surface) & $D_2$ (25% Volume) | Gate G0 (Format/Build) & Gate G1 (Verification) | Gate G2 (Risk/Safety) & Gate G-Complexity (Clarity) |
+| :--- | :--- | :--- | :--- | :--- |
+| **`software`** *(default)* | `engineering,security,testing` | **$D_1$**: Entities/endpoints; **$D_2$**: Production LOC ($<300$ to $>1,400$) | **G0**: Compiler, linter, formatter (0 warnings). **G1**: Unit/integration tests ($\ge 90\%$ coverage). | **G2**: `security-audit` (OWASP, secrets, crypto). **G-Complexity**: Cyclomatic $CC \le 6$ (cap 10). |
+| **`product`** | `product,design,project-management,research` | **$D_1$**: User flows/personas/screens; **$D_2$**: Spec depth ($<800$ to $>4,000$ words) | **G0**: Schema, template & link validation. **G1**: 100% acceptance-criteria & edge-case traceability. | **G2**: Privacy, accessibility (WCAG/Section 508) & UX dark-pattern audit. **G-Complexity**: Flow branching depth $\le 2$, unambiguous scope. |
+| **`marketing`** | `marketing,paid-media,sales,design` | **$D_1$**: Channels/funnels/creatives; **$D_2$**: Asset count & copy volume | **G0**: Brand voice, style guide & SEO/UTM lint. **G1**: Conversion tracking, A/B hypothesis & KPI completeness. | **G2**: FTC/ad-policy compliance, claim substantiation & brand safety. **G-Complexity**: Readability grade & single-CTA clarity. |
+| **`finance`** | `finance,specialized,support` | **$D_1$**: Models/statements/scenarios; **$D_2$**: Schedules, formulas & sensitivity tables | **G0**: Formula integrity, balance reconciliation (0 rounding drift). **G1**: Stress-test & sensitivity scenario verification. | **G2**: Tax/regulatory/audit compliance (SOX/IFRS/GAAP) & PII redaction. **G-Complexity**: Model modularity & transparent assumptions. |
+| **`research`** | `academic,research,specialized` | **$D_1$**: Hypotheses/sections/datasets; **$D_2$**: Word count & citation density | **G0**: Citation format, bibliography & figure/table numbering check. **G1**: Statistical validity, methodology & source verification. | **G2**: Plagiarism/hallucination check, ethics & bias audit. **G-Complexity**: Argument cohesion & readability. |
+| **`healthcare`** | `healthcare,security,academic,support` | **$D_1$**: Clinical pathways/protocols; **$D_2$**: Evidence tables & regulatory modules | **G0**: Terminology standards (ICD/SNOMED/FHIR) & template check. **G1**: Clinical evidence grading & protocol verification. | **G2**: HIPAA/PHI privacy, patient-safety & regulatory compliance. **G-Complexity**: Decision-tree clarity ($\le 2$ nested conditions). |
+| **`game-dev`** | `game-development,spatial-computing,design,testing` | **$D_1$**: Mechanics/systems/shaders/levels; **$D_2$**: Script LOC or scene asset count | **G0**: Engine build, shader compile & asset budget check. **G1**: Frame-time budget, multiplayer sync & playtest assertions. | **G2**: Anti-cheat, economy exploit & state-desync audit. **G-Complexity**: Script $CC \le 6$ & state-machine simplicity. |
+| **`gis`** | `gis,engineering,testing` | **$D_1$**: Layers/pipelines/projections; **$D_2$**: Spatial scripts & dataset schemas | **G0**: CRS/projection validation, GeoJSON/WKT schema lint. **G1**: Spatial topology, bounds & accuracy verification. | **G2**: Geoprivacy & data-licensing compliance. **G-Complexity**: Geoprocessing pipeline modularity. |
+
+Browse and enable the exact agents or field preset your project needs:
 
 ```bash
+# List all --field presets and their auto-enabled divisions
+./scripts/select-agents.sh --list-fields
+
+# Enable an entire industry field preset with one flag (writes .agents/field-profile.json)
+./scripts/select-agents.sh --field research --target /path/to/your/project
+
 # List all 18 divisions and agent counts
 ./scripts/select-agents.sh --list-divisions
 
@@ -259,10 +280,17 @@ This repository is structured as a **Universal Tri-Platform Plugin** ready for d
 ### Option D: Install for All Platforms Simultaneously (`--tool all`)
 
 ```bash
+# Default software engineering preset (--field software)
 ./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
   --tool all \
-  --target /path/to/your/project \
-  --divisions engineering,security,testing
+  --field software \
+  --target /path/to/your/project
+
+# Or target any industry domain (product, marketing, finance, research, healthcare, game-dev, gis)
+./divide-and-conquer-dev-plugin/scripts/install-plugin.sh \
+  --tool all \
+  --field research \
+  --target /path/to/your/project
 ```
 
 ### Initialize GitHub Projects Kanban & Start Orchestration
@@ -319,6 +347,8 @@ divide-and-conquer-dev-plugin/
 ├── CLAUDE.md                                       # Root instructions (Claude Code)
 ├── hooks.json                                      # Antigravity SessionStart hook (git & gh check)
 ├── hooks/hooks.json                                # Claude Code SessionStart hook (git & gh check)
+├── profiles/
+│   └── fields.json                                 # Field-targeting registry (--field software|product|marketing|finance|research|healthcare|game-dev|gis)
 ├── commands/                                       # Slash commands (/divide-and-conquer, /decompose-spec, etc.)
 ├── rules/
 │   ├── AGENTS.md                                   # Consolidated workspace governance rules (<24 KB)
