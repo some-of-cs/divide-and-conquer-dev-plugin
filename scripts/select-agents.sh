@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conquer-dev-plugin — Agency Roster Selector (msitarzewski/agency-agents)
+# some-divide-and-conquer — Agency Roster Selector (msitarzewski/agency-agents)
 # Enables users to browse, search, and install any of the 283 agents across all
 # 18 divisions from https://github.com/msitarzewski/agency-agents or target an
 # entire industry domain with a single --field <FIELD_PROFILE> flag.

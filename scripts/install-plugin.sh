@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# divide-and-conquer-dev-plugin — Universal Tri-Platform Plugin Installer
+# some-divide-and-conquer — Universal Tri-Platform Plugin Installer
 # Supports Google Antigravity, Claude Code, and OpenAI Codex CLI.
 # Enforces Gate 0 (git + gh verification) before installing the plugin, skills,
 # slash commands, core orchestrators, field profiles, and msitarzewski/agency-agents.
@@ -54,7 +54,7 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") [OPTIONS]
 
-Install the divide-and-conquer-dev-plugin into a target project workspace for:
+Install the some-divide-and-conquer into a target project workspace for:
   • Google Antigravity (.agents/, AGENTS.md)
   • Claude Code        (.claude/, CLAUDE.md, commands/, agents/, skills/)
   • OpenAI Codex CLI   (.codex/, AGENTS.md, skills/)
@@ -96,7 +96,7 @@ if [[ "$DIVISIONS_EXPLICIT" == false ]]; then
 fi
 
 echo "======================================================================"
-echo "  Installing divide-and-conquer-dev-plugin (Platform: $TOOL_PLATFORM, Field: $CANONICAL_FIELD)"
+echo "  Installing some-divide-and-conquer (Platform: $TOOL_PLATFORM, Field: $CANONICAL_FIELD)"
 echo "======================================================================"
 
 # 1. Mandatory Gate 0 check: Ensure git and gh exist before starting!
@@ -110,8 +110,10 @@ fi
 mkdir -p "$TARGET_DIR/.agents/rules" \
          "$TARGET_DIR/.agents/skills" \
          "$TARGET_DIR/.agents/agents" \
+         "$TARGET_DIR/.agents/assets" \
          "$TARGET_DIR/.agents/checkpoints" \
          "$TARGET_DIR/.agents/profiles" \
+         "$TARGET_DIR/assets" \
          "$TARGET_DIR/profiles" \
          "$TARGET_DIR/scripts" \
          "$TARGET_DIR/.worktrees"
@@ -120,6 +122,10 @@ cp "$PLUGIN_ROOT/rules/AGENTS.md" "$TARGET_DIR/AGENTS.md"
 cp -r "$PLUGIN_ROOT/rules/references/"* "$TARGET_DIR/.agents/rules/"
 cp -r "$PLUGIN_ROOT/skills/"* "$TARGET_DIR/.agents/skills/"
 cp "$PLUGIN_ROOT/agents/"*.md "$TARGET_DIR/.agents/agents/"
+if [[ -d "$PLUGIN_ROOT/assets" ]]; then
+  cp -r "$PLUGIN_ROOT/assets/"* "$TARGET_DIR/.agents/assets/"
+  cp -r "$PLUGIN_ROOT/assets/"* "$TARGET_DIR/assets/"
+fi
 cp "$PLUGIN_ROOT/scripts/"*.sh "$TARGET_DIR/scripts/"
 cp "$PLUGIN_ROOT/hooks.json" "$TARGET_DIR/hooks.json"
 if [[ -f "$FIELDS_JSON" ]]; then
@@ -160,25 +166,33 @@ fi
 if [[ "$TOOL_PLATFORM" == "claude" || "$TOOL_PLATFORM" == "all" ]]; then
   mkdir -p "$TARGET_DIR/.claude/skills" \
            "$TARGET_DIR/.claude/agents" \
-           "$TARGET_DIR/.claude/commands"
+           "$TARGET_DIR/.claude/commands" \
+           "$TARGET_DIR/.claude/assets"
   cp "$PLUGIN_ROOT/CLAUDE.md" "$TARGET_DIR/CLAUDE.md"
   cp -r "$TARGET_DIR/.agents/skills/"* "$TARGET_DIR/.claude/skills/"
   cp -r "$TARGET_DIR/.agents/agents/"* "$TARGET_DIR/.claude/agents/"
   cp -r "$PLUGIN_ROOT/commands/"* "$TARGET_DIR/.claude/commands/"
-  echo "  ✅ Configured Claude Code (.claude/skills, .claude/agents, .claude/commands, CLAUDE.md)"
+  if [[ -d "$PLUGIN_ROOT/assets" ]]; then
+    cp -r "$PLUGIN_ROOT/assets/"* "$TARGET_DIR/.claude/assets/"
+  fi
+  echo "  ✅ Configured Claude Code (.claude/skills, .claude/agents, .claude/commands, .claude/assets, CLAUDE.md)"
 fi
 
 # 5. OpenAI Codex CLI Platform Setup (.codex/ and AGENTS.md)
 if [[ "$TOOL_PLATFORM" == "codex" || "$TOOL_PLATFORM" == "all" ]]; then
   mkdir -p "$TARGET_DIR/.codex/skills" \
-           "$TARGET_DIR/.codex/agents"
+           "$TARGET_DIR/.codex/agents" \
+           "$TARGET_DIR/.codex/assets"
   cp -r "$TARGET_DIR/.agents/skills/"* "$TARGET_DIR/.codex/skills/"
   cp -r "$TARGET_DIR/.agents/agents/"* "$TARGET_DIR/.codex/agents/"
-  echo "  ✅ Configured OpenAI Codex CLI (.codex/skills, .codex/agents, AGENTS.md)"
+  if [[ -d "$PLUGIN_ROOT/assets" ]]; then
+    cp -r "$PLUGIN_ROOT/assets/"* "$TARGET_DIR/.codex/assets/"
+  fi
+  echo "  ✅ Configured OpenAI Codex CLI (.codex/skills, .codex/agents, .codex/assets, AGENTS.md)"
 fi
 
 echo ""
-echo "✅ divide-and-conquer-dev-plugin installed into: $TARGET_DIR"
+echo "✅ some-divide-and-conquer installed into: $TARGET_DIR"
 echo "   • Active Field Profile:      $CANONICAL_FIELD ($TARGET_DIR/.agents/field-profile.json)"
 echo "   • Antigravity & Codex Rules: $TARGET_DIR/AGENTS.md"
 echo "   • Claude Code Rules:         $TARGET_DIR/CLAUDE.md"

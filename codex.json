@@ -1,7 +1,11 @@
 {
-  "name": "divide-and-conquer-dev-plugin",
+  "name": "some-divide-and-conquer",
+  "display_name": "Some Divide-and-Conquer",
   "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer Software Engineering Plugin for OpenAI Codex, Google Antigravity, and Claude Code.",
+  "logo": "./assets/logo.svg",
+  "plugin_logo": "./assets/plugin-logo.svg",
+  "org_logo": "./assets/some-of-cs-logo.png",
   "instructions": "./AGENTS.md",
   "skills_dir": "./skills",
   "agents_dir": "./agents",

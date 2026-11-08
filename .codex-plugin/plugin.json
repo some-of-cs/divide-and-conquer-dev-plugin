@@ -1,7 +1,9 @@
 {
-  "name": "divide-and-conquer-dev-plugin",
+  "name": "some-divide-and-conquer",
   "version": "1.1.0",
   "description": "Autonomous Divide-and-Conquer multi-agent engineering & domain delivery plugin for OpenAI Codex CLI, Google Antigravity, and Claude Code. Transforms monolithic specifications into parallel Modules, User Stories, and non-blocking Implementation Units inside isolated Git worktrees across 8 industry --field presets.",
+  "logo": "./assets/logo.svg",
+  "orgLogo": "./assets/some-of-cs-logo.png",
   "license": "Apache-2.0",
   "keywords": [
     "codex-plugin",
@@ -26,11 +28,15 @@
   "agents": "./agents",
   "instructions": "./AGENTS.md",
   "interface": {
-    "displayName": "Divide-and-Conquer Multi-Agent Engineering",
+    "displayName": "Some Divide-and-Conquer",
     "shortDescription": "Decompose monolithic specs into parallel Git worktree units with multi-council review and 283 specialist agents.",
     "longDescription": "Transforms monolithic specifications into bounded Modules, User Stories, and dynamically sized non-blocking Implementation Units in isolated Git worktrees, governed by multi-council code review, mandatory patch-implementer remediation loops, GitHub Projects Kanban tracking, and 8 industry --field presets.",
     "category": "Development Workflows",
     "websiteURL": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-    "developerName": "some-of-cs"
+    "logoURL": "./assets/logo.svg",
+    "iconURL": "./assets/plugin-logo.svg",
+    "brandLogoURL": "./assets/some-of-cs-logo.png",
+    "developerLogoURL": "https://avatars.githubusercontent.com/u/323249724?v=4",
+    "developerName": "Some(CS) (some-of-cs)"
   }
 }

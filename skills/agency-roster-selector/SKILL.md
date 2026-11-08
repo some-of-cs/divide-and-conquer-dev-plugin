@@ -5,7 +5,7 @@ description: Select, filter, and enable specialist AI agents from the bundled ms
 
 # Agency Roster Selector Skill (`msitarzewski/agency-agents`)
 
-The **`divide-and-conquer-dev-plugin`** is completely **language-, framework-, and industry-agnostic**. In addition to the 7 core orchestration agents (`Module Leader`, `Story Leader`, `Unit Implementer`, `patch-implementer`, `Code Reviewer Council President`, `Git Workflow Master`, `Quota Sentinel`), users can enable **any combination of the 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) or target an entire industry domain with a single `--field <FIELD_PROFILE>` flag.
+The **`some-divide-and-conquer`** is completely **language-, framework-, and industry-agnostic**. In addition to the 7 core orchestration agents (`Module Leader`, `Story Leader`, `Unit Implementer`, `patch-implementer`, `Code Reviewer Council President`, `Git Workflow Master`, `Quota Sentinel`), users can enable **any combination of the 283 specialist agents** from [`https://github.com/msitarzewski/agency-agents`](https://github.com/msitarzewski/agency-agents) or target an entire industry domain with a single `--field <FIELD_PROFILE>` flag.
 
 All 18 divisions, all 283 Antigravity-converted skills, and the central field registry (`profiles/fields.json`) are bundled directly in the plugin.
 
