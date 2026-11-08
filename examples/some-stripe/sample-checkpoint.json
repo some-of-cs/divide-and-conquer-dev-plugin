@@ -1,0 +1,58 @@
+{
+  "moduleId": "module-8",
+  "title": "Module 8: Stripe API v2 Next-Gen Services",
+  "githubProjectNumber": 1,
+  "updatedAt": "2026-11-08T08:52:00Z",
+  "items": {
+    "us-8.1.0": {
+      "status": "Merged",
+      "branch": "feat/us-8.1.0-v2-thin-events-and-meters",
+      "prNumber": 127,
+      "mergedSha": "e176c6e",
+      "unitCount": 5
+    },
+    "us-8.2.0/unit-1": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0/unit-1-v2-meter-event-sends",
+      "prNumber": 130,
+      "mergedSha": "4e19a11"
+    },
+    "us-8.2.0/unit-2": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0/unit-2-v2-meter-event-stream",
+      "prNumber": 131,
+      "mergedSha": "9b22c04"
+    },
+    "us-8.2.0/unit-3": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0/unit-3-v2-event-destinations-crud",
+      "prNumber": 132,
+      "mergedSha": "7c88d12"
+    },
+    "us-8.2.0/unit-4": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0/unit-4-v2-event-destination-actions",
+      "prNumber": 133,
+      "mergedSha": "2f01e98"
+    },
+    "us-8.2.0/unit-5": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0/unit-5-v2-accounts-and-links",
+      "prNumber": 134,
+      "mergedSha": "5def0af"
+    },
+    "us-8.2.0": {
+      "status": "Merged",
+      "branch": "feat/us-8.2.0-v2-billing-and-core",
+      "prNumber": 135,
+      "mergedSha": "6d01080",
+      "unitCount": 5
+    },
+    "module-8": {
+      "status": "Merged",
+      "branch": "feat/module-8-api-v2",
+      "prNumber": 136,
+      "mergedSha": "d975f07"
+    }
+  }
+}
