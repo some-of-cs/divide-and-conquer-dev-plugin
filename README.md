@@ -6,7 +6,7 @@
   <a href="https://github.com/some-of-cs">
     <img src="assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="120" height="120" style="vertical-align: middle; border-radius: 20px; margin-right: 16px;" />
   </a>
-  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+  <a href="https://github.com/some-of-cs/some-divide-and-conquer">
     <img src="assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="120" height="120" style="vertical-align: middle;" />
   </a>
 </p>
@@ -254,7 +254,7 @@ This repository is structured as a **Universal Tri-Platform Plugin (`some-divide
 1. **Native Antigravity Plugin Manifest**: [`plugin.json`](plugin.json) (with [`hooks.json`](hooks.json) and [`rules/AGENTS.md`](rules/AGENTS.md)).
 2. **Install into any workspace**:
    ```bash
-   git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+   git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
    ./some-divide-and-conquer/scripts/install-plugin.sh \
      --tool antigravity \
      --target /path/to/your/project \
@@ -266,7 +266,7 @@ This repository is structured as a **Universal Tri-Platform Plugin (`some-divide
 1. **Native Claude Code Manifests**: [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
 2. **Install directly from the Claude Code Marketplace**:
    ```text
-   /plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
+   /plugin marketplace add some-of-cs/some-divide-and-conquer
    /plugin install some-divide-and-conquer@some-divide-and-conquer-marketplace
    ```
 3. **Included Claude Code Slash Commands ([`.claude-plugin/commands/`](.claude-plugin/commands/))**:

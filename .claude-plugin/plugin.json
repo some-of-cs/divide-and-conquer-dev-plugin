@@ -10,8 +10,8 @@
     "name": "Some(CS) (some-of-cs)",
     "url": "https://github.com/some-of-cs"
   },
-  "homepage": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
-  "repository": "https://github.com/some-of-cs/divide-and-conquer-dev-plugin",
+  "homepage": "https://github.com/some-of-cs/some-divide-and-conquer",
+  "repository": "https://github.com/some-of-cs/some-divide-and-conquer",
   "license": "Apache-2.0",
   "keywords": [
     "antigravity-plugin",

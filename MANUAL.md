@@ -6,7 +6,7 @@
   <a href="https://github.com/some-of-cs">
     <img src="assets/some-of-cs-logo.png" alt="Some(CS) Organization Logo" width="110" height="110" style="vertical-align: middle; border-radius: 18px; margin-right: 16px;" />
   </a>
-  <a href="https://github.com/some-of-cs/divide-and-conquer-dev-plugin">
+  <a href="https://github.com/some-of-cs/some-divide-and-conquer">
     <img src="assets/plugin-logo.svg" alt="some-divide-and-conquer Plugin Logo" width="110" height="110" style="vertical-align: middle;" />
   </a>
 </p>
@@ -149,7 +149,7 @@ gh auth login -s repo,project,read:project
 **Option A: Clone and Install**
 ```bash
 # Clone the plugin
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 # Install into your project
 ./some-divide-and-conquer/scripts/install-plugin.sh \
@@ -184,7 +184,7 @@ agy plugin install some-of-cs/some-divide-and-conquer
 
 **Option A: Clone and Install**
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 ./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool claude \
@@ -213,7 +213,7 @@ your-project/
 
 **Option B: Claude Code Marketplace**
 ```
-/plugin marketplace add some-of-cs/divide-and-conquer-dev-plugin
+/plugin marketplace add some-of-cs/some-divide-and-conquer
 /plugin install some-divide-and-conquer@some-divide-and-conquer-marketplace
 ```
 
@@ -229,7 +229,7 @@ your-project/
 ### 4.3 OpenAI Codex CLI
 
 ```bash
-git clone https://github.com/some-of-cs/divide-and-conquer-dev-plugin.git some-divide-and-conquer
+git clone https://github.com/some-of-cs/some-divide-and-conquer.git some-divide-and-conquer
 
 ./some-divide-and-conquer/scripts/install-plugin.sh \
   --tool codex \
@@ -978,8 +978,8 @@ This plugin depends on and gratefully acknowledges:
 
 ### Support & Contributing
 
-- **Issues**: [GitHub Issues](https://github.com/some-of-cs/divide-and-conquer-dev-plugin/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/some-of-cs/divide-and-conquer-dev-plugin/discussions)
+- **Issues**: [GitHub Issues](https://github.com/some-of-cs/some-divide-and-conquer/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/some-of-cs/some-divide-and-conquer/discussions)
 - **Sponsor**: [GitHub Sponsors](https://github.com/sponsors/some-of-cs)
 
 ---
