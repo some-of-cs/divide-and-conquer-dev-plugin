@@ -42,3 +42,13 @@ $$S_{\text{story}} = 0.35 D_1 + 0.25 D_2 + 0.20 D_3 + 0.20 D_4$$
    - **Prohibited**: Creating a blocking "Unit $K$: Integration Tests & Review for Units $1..K-1$" unit. Such a unit cannot run in parallel with Units $1..K-1$ and violates the non-blocking invariant.
 2. **Zero Inter-Unit Blocking**:
    - Before spawning Unit Implementers $1..K$, the Story Leader defines shared types/interfaces/schemas on the story base branch (`feat/us-M.S.0-<slug>`) or partitions units into disjoint files/modules/chapters so all $K$ units build, verify, and run concurrently in parallel without waiting on one another.
+
+## 4. Required Decomposition Deliverables (`docs/architecture/` & `docs/user-stories/`)
+
+Besides `docs/architecture/DECOMPOSITION_ROADMAP.md`, decomposition MUST generate `docs/user-stories/module-M-<slug>/us-M.S.0-<story-slug>.md` for every User Story under its Module folder, containing:
+1. **Spec Kit Specifications** (`1.1 User Story Narrative`, `1.1.1 Preconditions`, `1.1.2 Postconditions`, `1.2 Acceptance Criteria (Gherkin Scenarios)`, `1.3 Test Cases & Traceability Matrix`)
+2. **Technical Implementation Plan** (`2.1 Domain Invariants & Storage Schema`, `2.2 Activity Diagram` or `2.2 Sequence Diagram` — choose the single header that best fits the story)
+3. **Expected Folder Architecture at the Project** (disjoint unit file ownership tree)
+4. **Implementation Units in Detail & Specialist Agent Assignment** (`4.1 Story Decomposition Score & Unit Count`, `4.2 Detailed Unit Specifications`, `4.3 Best-Fit Specialist Agents per Unit`, `4.4 Parallel Execution & Zero-Blocking Contract Seeding Plan`)
+5. **Security Gateway (Powered by `security-audit` Skill)** (`5.1 Trust Boundaries & Security Actors`, `5.2 Threat Modeling & Abuse Matrix (STRIDE / OWASP ASVS)`, `5.3 Cryptography & Global Data Protection Controls` for worldwide legal compliance, `5.4 Automated Security Verification Checklist`, `5.5 Security Gateway (Gate G2) Sign-Off Checklist`)
+6. **Validation Gates & Acceptance Sign-Off** (Gates G0, G1, G2, G-Complexity, G-Docs, and Gate G-Review sign-off)

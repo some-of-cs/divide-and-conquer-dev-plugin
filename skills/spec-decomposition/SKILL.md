@@ -1,6 +1,6 @@
 ---
 name: spec-decomposition
-description: Transform monolithic specifications, PRDs, RFCs, financial models, marketing plans, or research documents into bounded Modules, User Stories, and a dynamically sized number of non-blocking, parallel Implementation Units (1..K) using a field-adapted quantitative decision matrix (--field software|product|marketing|finance|research|healthcare|game-dev|gis).
+description: Transform monolithic specifications, PRDs, RFCs, financial models, marketing plans, or research documents into bounded Modules, User Stories, a dynamically sized number of non-blocking Implementation Units (1..K), an Architecture Decomposition Roadmap, and a complete docs/user-stories/<module-id>/<story-id>.md specification suite.
 ---
 
 # Monolithic Specification Decomposition Skill
@@ -100,8 +100,249 @@ $$S_{\text{story}} = (0.35 \times D_1) + (0.25 \times D_2) + (0.20 \times D_3) +
 
 ---
 
-## 4. Decomposition Output Artifact & GitHub Projects Sync
+## 4. Mandatory Decomposition Output Artifacts: Architecture Roadmap + Per-Module User Stories Folder
 
-After decomposing the monolithic spec:
-1. Create the decomposition roadmap document (e.g., `docs/architecture/DECOMPOSITION_ROADMAP.md`) listing the active `--field` profile, every Module, User Story, its calculated $S_{\text{story}}$ score, chosen unit count $K$, and the exact file ownership boundary of each Unit $1..K$.
-2. Run `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/gh-kanban-sync.sh init` to populate all Modules, User Stories, and Implementation Units on the **GitHub Projects Kanban board** and initialize `.agents/checkpoints/<module-id>/checkpoint.json`.
+Every decomposition run MUST produce **two synchronized documentation outputs** before spawning module/story leaders:
+
+1. **Master Architecture Decomposition Roadmap**:
+   - `docs/architecture/DECOMPOSITION_ROADMAP.md`
+2. **Per-Module User Stories Directory Tree (`docs/user-stories/`)**:
+   - Create a dedicated subfolder for **every Module (`module-1..M`)**, and inside each module folder, create a comprehensive specification document for **every User Story (`us-M.S.0`)** under that module:
+   ```text
+   docs/
+   ├── architecture/
+   │   └── DECOMPOSITION_ROADMAP.md
+   └── user-stories/
+       ├── module-1-<module-slug>/
+       │   ├── README.md                           # Module 1 overview, story index & dependencies
+       │   ├── us-1.1.0-<story-slug>.md            # Comprehensive Spec Kit & Security Gateway doc
+       │   └── us-1.2.0-<story-slug>.md
+       ├── module-2-<module-slug>/
+       │   ├── README.md
+       │   ├── us-2.1.0-<story-slug>.md
+       │   └── us-2.2.0-<story-slug>.md
+       └── module-M-<module-slug>/
+           ├── README.md
+           └── us-M.S.0-<story-slug>.md
+   ```
+
+---
+
+## 5. Mandatory Template for Every User Story Document (`docs/user-stories/module-M-<slug>/us-M.S.0-<story-slug>.md`)
+
+Every User Story document under `docs/user-stories/module-M-<slug>/` MUST include **at least** the following 6 major sections and all of their sub-sections:
+
+```markdown
+# User Story `US-M.S.0`: <User Story Title>
+
+- **Module**: `module-M` (<Module Name>)
+- **Story Branch**: `feat/us-M.S.0-<story-slug>`
+- **Field Profile**: `<software|product|marketing|finance|research|healthcare|game-dev|gis>`
+- **Story Decomposition Score ($S_{\text{story}}$)**: `<X.XX>` $\to$ **`<K>` Parallel Implementation Units (`unit-1..K`)**
+
+---
+
+## 1. Spec Kit Specifications
+
+### 1.1 User Story Narrative
+> **As a** <primary persona / actor>,  
+> **I want** <capability, deliverable, or system behavior>,  
+> **So that** <quantifiable business, engineering, or user value>.
+
+Provide a detailed functional narrative explaining the context, boundaries, inputs, outputs, and deterministic behavior of this story.
+
+#### 1.1.1 Preconditions
+- List all required system states, upstream module contracts, environment configurations, permissions, or input artifacts that MUST hold true before this user story executes.
+
+#### 1.1.2 Postconditions
+- List all guaranteed state transitions, persisted records/files, emitted events, audit logs, and invariant guarantees that MUST hold true upon successful completion.
+
+### 1.2 Acceptance Criteria (Gherkin Scenarios)
+Write exhaustive, deterministic `Feature` / `Scenario` blocks in Gherkin syntax covering happy paths, edge/boundary cases, and error/rejection paths:
+
+```gherkin
+Feature: <User Story Feature Name>
+
+  Scenario: AC-1 — <Primary Happy Path>
+    Given <initial context / precondition>
+    And <supporting state>
+    When <actor triggers action / API / workflow>
+    Then <expected primary outcome>
+    And <expected postcondition / audit side-effect>
+
+  Scenario: AC-2 — <Boundary / Edge Case>
+    Given <boundary condition>
+    When <action is executed>
+    Then <deterministic handling>
+
+  Scenario: AC-3 — <Invalid Input / Security / Failure Mode>
+    Given <unauthorized, malformed, or out-of-bounds input>
+    When <action is attempted>
+    Then <explicit error / rejection with zero state corruption>
+```
+
+### 1.3 Test Cases & Traceability Matrix
+Map every Acceptance Criterion (`AC-1..N`) to concrete Test Case IDs (`TC-1..N`), the owning Implementation Unit (`unit-1..K`), test level, and verification command:
+
+| Test Case ID | Mapped AC | Owning Unit | Test Level (Unit / Integration / Property / Security) | Description & Input Vector | Expected Result & Pass Threshold |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| `TC-M.S.1` | `AC-1` | `unit-1` | Unit + Integration | <Test scenario & input> | <Deterministic assertion> |
+| `TC-M.S.2` | `AC-2` | `unit-2` | Boundary / Edge | <Boundary input> | <Expected behavior> |
+| `TC-M.S.3` | `AC-3` | `unit-K` | Security / Negative | <Adversarial / malformed input> | <Rejected with typed error, 0 leak> |
+
+---
+
+## 2. Technical Implementation Plan
+
+### 2.1 Domain Invariants & Storage Schema
+- **Domain Invariants**: List all non-negotiable domain rules, state-machine constraints, idempotency guarantees, concurrency rules, and validation bounds.
+- **Storage Schema / Data Models / Artifact Schema**: Provide exact type definitions, database/table schemas, wire protocols, JSON schemas, or document/model structures introduced or updated by this story.
+
+### 2.2 Activity Diagram *(or `### 2.2 Sequence Diagram` — choose ONE header that best represents this User Story)*
+*(Rule: Select **either** `### 2.2 Activity Diagram` **or** `### 2.2 Sequence Diagram` depending on whether control-flow branching/parallel activities or multi-actor message passing better describes the story, and render a complete Mermaid diagram.)*
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Actor as User / Caller
+    participant API as Boundary / Handler (Unit 1)
+    participant Core as Domain Service (Unit 2)
+    participant Store as Storage / Ledger (Unit K)
+
+    Actor->>API: Submit request / trigger workflow
+    API->>API: Validate schema, auth & rate bounds
+    API->>Core: Execute domain logic
+    Core->>Store: Persist state transition atomically
+    Store-->>Core: Confirm commit & audit record
+    Core-->>API: Return typed result
+    API-->>Actor: Deterministic response
+```
+
+---
+
+## 3. Expected Folder Architecture at the Project
+
+Show the exact project directory tree and file paths created or modified by this User Story, annotating which Implementation Unit (`unit-1..K`) owns each file to guarantee **100% disjoint file ownership**:
+
+```text
+<project-root>/
+├── src/ (or domain deliverable root)
+│   ├── <module-slug>/
+│   │   ├── mod / index                  # Seeded on Story base branch (feat/us-M.S.0)
+│   │   ├── <slice-1>                    # Owned exclusively by unit-1
+│   │   ├── <slice-2>                    # Owned exclusively by unit-2
+│   │   └── <slice-K>                    # Owned exclusively by unit-K
+└── tests/
+    └── <module-slug>/
+        ├── test_<slice-1>               # Owned exclusively by unit-1
+        ├── test_<slice-2>               # Owned exclusively by unit-2
+        └── test_<slice-K>               # Owned exclusively by unit-K
+```
+
+---
+
+## 4. Implementation Units in Detail & Specialist Agent Assignment
+
+### 4.1 Story Decomposition Score ($S_{\text{story}}$) & Dynamic Unit Count ($K$)
+- **$D_1$ (35% Surface)**: `<1..4>` — <justification>
+- **$D_2$ (25% Volume)**: `<1..4>` — <justification>
+- **$D_3$ (20% Complexity)**: `<1..4>` — <justification>
+- **$D_4$ (20% Boundaries)**: `<1..4>` — <justification>
+- **Calculated Score**: $S_{\text{story}} = 0.35(D_1) + 0.25(D_2) + 0.20(D_3) + 0.20(D_4) = \mathbf{<X.XX>}$ $\to$ **`<K>` Parallel Units**
+
+### 4.2 Detailed Unit Specifications (`unit-1..K`)
+For each unit `i` in `1..K` (all obeying **Invariant A: Pure Deliverable Production Only** and **Invariant B: Zero Inter-Unit Blocking**):
+- **`unit-1` (`feat/us-M.S.0/unit-1-<scope>`)**:
+  - **Deliverable Scope**: <exact functionality/artifact produced>
+  - **Owned Files**: `<disjoint file list>`
+  - **Public Contract / Exports**: `<types/functions/sections exposed>`
+  - **Unit Verification & Target Complexity**: `<unit test suite>`, Max Cyclomatic Complexity $CC \le 6$ (cap $\le 10$, nesting $\le 2$)
+- **`unit-2` (`feat/us-M.S.0/unit-2-<scope>`)**: ...
+- **`unit-K` (`feat/us-M.S.0/unit-K-<scope>`)**: ...
+
+### 4.3 Best-Fit Specialist Agents per Unit (`msitarzewski/agency-agents` + Core Roster)
+Map each Implementation Unit and its Reviewing Council to the optimal specialist agent slugs from the bundled 283-agent catalog (`agents/agency-catalog/`):
+
+| Unit ID | Branch Name | Primary Implementer Agent(s) (`agency-catalog`) | Reviewing Council Agent(s) | Mandatory Skills Enforced |
+| :--- | :--- | :--- | :--- | :--- |
+| `unit-1` | `feat/us-M.S.0/unit-1-<scope>` | `<e.g., backend-architect / rust-refactoring-specialist / financial-analyst>` | `code-reviewer`, `application-security-engineer`, `test-automation-engineer` | `code-review-council`, `security-audit`, `cyclomatic-complexity` |
+| `unit-2` | `feat/us-M.S.0/unit-2-<scope>` | `<e.g., api-platform-engineer / frontend-developer / research-synthesist>` | `code-reviewer`, `security-architect`, `api-tester` | `code-review-council`, `security-audit`, `cyclomatic-complexity` |
+| `unit-K` | `feat/us-M.S.0/unit-K-<scope>` | `<e.g., database-optimizer / ai-engineer / compliance-auditor>` | `code-reviewer`, `penetration-tester`, `reality-checker` | `code-review-council`, `security-audit`, `cyclomatic-complexity` |
+| **Story Remediation** | `patch/us-M.S.0-<scope>` | `patch-implementer` + `<domain-specialist>` | `code-reviewer-council-president` | Full 6-Gate Re-Verification |
+
+### 4.4 Parallel Execution & Zero-Blocking Contract Seeding Plan
+1. **Base Contract Seeding**: List exact shared traits, interfaces, DTOs, or schemas committed to `feat/us-M.S.0-<slug>` *before* branching `unit-1..K`.
+2. **Simultaneous Worktree Spawning**: All $K$ units are provisioned in `.worktrees/feat-us-M.S.0-unit-1..K` and spawned simultaneously in Step 1.
+3. **Ordered Cascading Merge Sequence**: `unit-1` $\to$ `unit-2` $\to \dots \to$ `unit-K` into `feat/us-M.S.0-<slug>` via `gh pr merge <PR> --merge`.
+
+---
+
+## 5. Security Gateway (Powered by `security-audit` Skill)
+
+### 5.1 Trust Boundaries & Security Actors
+- **Security Actors**: Identify all human users, external API callers, internal subagents/services, privileged admins, and untrusted third-party webhooks/inputs.
+- **Trust Boundaries**: Explicitly demarcate where untrusted data crosses into validated application/domain boundaries (network ingress, deserialization, auth token verification, file/storage I/O, cross-tenant boundaries).
+
+### 5.2 Threat Modeling & Abuse Matrix (STRIDE / OWASP ASVS)
+
+| Threat ID | STRIDE Category | ASVS / CWE Ref | Attack Vector / Abuse Scenario | Impact | Required Mitigation & Code/Deliverable Control |
+| :--- | :---: | :---: | :--- | :---: | :--- |
+| `TM-1` | **S**poofing | ASVS V2 / CWE-287 | Forged identity, token replay, or webhook spoofing | Critical | Constant-time signature/token verification + strict expiry/nonce check |
+| `TM-2` | **T**ampering | ASVS V5 / CWE-20 | Malformed payload, injection, or schema mass-assignment | High | Strict allowlist schema validation, parameterized queries, immutable audit log |
+| `TM-3` | **R**epudiation | ASVS V7 / CWE-778 | Unlogged state mutation or missing actor attribution | Medium | Tamper-evident structured audit event with actor ID, timestamp, and request hash |
+| `TM-4` | **I**nformation Disclosure | ASVS V8 / CWE-200 | Secret/PII leak in logs, error stack traces, or responses | Critical | Automatic `[REDACTED]` debug/log scrubbing; zero raw internal errors exposed |
+| `TM-5` | **D**enial of Service | ASVS V11 / CWE-400 | Unbounded payload size, regex backtracking, or resource exhaustion | High | Explicit payload byte limits, pagination caps, timeouts, and rate limiting |
+| `TM-6` | **E**levation of Privilege | ASVS V4 / CWE-285 | Cross-tenant IDOR or missing role/scope authorization check | Critical | Mandatory tenant/actor scope enforcement on every read/write operation |
+
+### 5.3 Cryptography & Global Data Protection Controls (Worldwide Legal & Regulatory Compliance)
+To ensure this User Story can operate legally and securely **across all global jurisdictions**, enforce:
+1. **Cryptographic Standards**:
+   - **In Transit**: TLS 1.3+ (`HTTPS` / `mTLS`) for all network hops.
+   - **At Rest**: AEAD encryption (`AES-256-GCM` or `ChaCha20-Poly1305`) for sensitive tokens, credentials, and regulated records.
+   - **Signatures, Hashing & Secrets**: Constant-time comparison (`subtle::ConstantTimeEq` / `hmac.compare_digest` / `crypto.timingSafeEqual`) for all MACs/tokens; `SHA-256`/`SHA-512` or `Argon2id` for password/key derivation; zero hardcoded secrets or weak primitives (`MD5`/`SHA-1`).
+2. **Global Multi-Jurisdictional Privacy & Legal Compliance (Worldwide Readiness)**:
+   - **EU / EEA & UK (`GDPR` / `UK GDPR`)**: Data minimization, purpose limitation, lawful basis tracking, Right to Erasure / Right to Portability hooks (`delete_subject_data` / `export_subject_data`), and strict PII redaction in telemetry.
+   - **United States (`CCPA`/`CPRA`, `HIPAA` for PHI, `GLBA`/`SOX` for financial, `COPPA`)**: Opt-out/consent flags, PHI/PII access audit trails, and strict separation of financial/health identifiers.
+   - **Global Regional Frameworks (`Brazil LGPD`, `Singapore PDPA`, `Japan APPI`, `China PIPL`, `Canada PIPEDA`, `Australia Privacy Act`, `PCI-DSS v4.0`)**:
+     - **Data Residency & Sovereignty**: Configurable region/tenant storage partitioning (`region_code` / `data_residency_zone`) so regulated data never crosses prohibited jurisdictional borders without explicit consent/transfer mechanisms.
+     - **Universal PII/Secret Redaction**: Automatic redaction of personal names, emails, national IDs, payment instruments (PAN/CVV), and auth tokens from all logs, traces, and analytics across every locale (`UTF-8` / `i18n` safe).
+
+### 5.4 Automated Security Verification Checklist (`cloudflare/security-audit-skill`)
+- [ ] Applicable `skills/security-audit/playbooks/` reviewed (`WEB-PROTOCOL-AND-AUTH.md`, `AI-AND-LLM.md`, `MEMORY-SAFETY-AND-BINARY.md`, `CLOUD-AND-DEPLOYMENT.md`, `SUPPLY-CHAIN-AND-RELEASE.md`, etc.).
+- [ ] All untrusted inputs validated for type, length, range, and encoding prior to domain processing.
+- [ ] Zero secrets, API keys, private keys, or raw PII emitted in `Debug` formatting, logs, or error messages.
+- [ ] Security coverage ledger and findings validated via `node skills/security-audit/validate-findings.cjs` and `node skills/security-audit/validate-coverage-ledger.cjs`.
+
+### 5.5 Security Gateway (Gate G2) Sign-Off Checklist
+- [ ] **0 Critical / High / Medium** vulnerabilities in `security-audit` scan.
+- [ ] All STRIDE / ASVS threat mitigations (`TM-1..TM-6`) implemented and covered by negative/security test cases in Section 1.3.
+- [ ] Global data protection, residency partitioning, and PII/secret redaction controls verified.
+- [ ] Independent Security Reviewer agent sign-off posted to the GitHub PR conversation.
+
+---
+
+## 6. Validation Gates & Acceptance Sign-Off
+
+Every Unit PR (`feat/us-M.S.0/unit-1..K`) and the parent Story PR (`feat/us-M.S.0-<slug>`) MUST pass all 6 Quality Gates and post the evidence directly to the GitHub PR conversation (`./scripts/post-pr-report.sh`) before `gh pr merge`:
+
+| Gate | Gate Name | Pass Criteria for `US-M.S.0` | Verification Command / Evidence | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **Gate G0** | **Build, Lint & Format / Schema** | 0 errors, 0 warnings, 100% formatter / schema compliance | `<build & lint command>` | `[ ]` |
+| **Gate G1** | **Tests, Coverage & Traceability** | 100% of `AC-1..N` and `TC-M.S.1..N` passing ($\ge 90\%$ line, $\ge 85\%$ branch coverage) | `<test runner command>` | `[ ]` |
+| **Gate G2** | **Security Gateway (`security-audit`)** | All Section 5 STRIDE, crypto, and global compliance checks pass (0 findings) | `security-audit` report on PR | `[ ]` |
+| **Gate G-Complexity** | **Cyclomatic / Structural Complexity** | Every function $CC \le 6$ target ($CC \le 10$ ceiling, $CC > 15$ blocker, nesting $\le 2$) | `cyclomatic-complexity` table on PR | `[ ]` |
+| **Gate G-Docs** | **Documentation & Examples** | 100% public symbols/interfaces documented + runnable examples + this spec synced | `<doc check command>` | `[ ]` |
+| **Gate G-Review** | **Council President Sign-Off** | Independent Reviewing Council posts `GATE G-REVIEW APPROVED` on GitHub PR | `gh pr comment <PR>` | `[ ]` |
+
+### Final Acceptance Sign-Off Block
+- **Story Leader Verification**: All $K$ units merged via cascading `gh pr merge`, story integration suite green, and zero unaddressed findings (or remediated via dedicated `patch-implementer` PRs).
+- **Reviewing Council Verdict**: `PENDING` $\to$ `GATE G-REVIEW APPROVED`
+```
+
+---
+
+## 6. Execution Sequence After Generating Roadmap & User Story Docs
+
+1. Write `docs/architecture/DECOMPOSITION_ROADMAP.md`.
+2. Create `docs/user-stories/module-M-<slug>/README.md` and `docs/user-stories/module-M-<slug>/us-M.S.0-<story-slug>.md` for every Module and User Story using the mandatory 6-section template in Section 5.
+3. Run `${CLAUDE_PLUGIN_ROOT:-${ANTIGRAVITY_PLUGIN_ROOT:-.}}/scripts/gh-kanban-sync.sh init` to populate all Modules, User Stories, and Implementation Units on the **GitHub Projects Kanban board** and initialize `.agents/checkpoints/<module-id>/checkpoint.json`.

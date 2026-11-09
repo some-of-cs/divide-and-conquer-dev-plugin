@@ -17,6 +17,7 @@ Follow these steps strictly in order:
    - Ensure the single-profile `quota-sentinel` agent is active.
 3. **Specification Decomposition (`spec-decomposition` skill)**:
    - If `$ARGUMENTS` points to a monolithic spec/PRD/research document, decompose it into **Modules (`module-1..M`)**, **User Stories (`us-M.1.0..us-M.S.0`)**, and **dynamically sized, non-blocking Implementation Units (`unit-1..K`)** using the field-adapted **Story Decomposition Score ($S_{\text{story}}$)** matrix.
+   - Generate `docs/architecture/DECOMPOSITION_ROADMAP.md` AND the per-module user story folder tree `docs/user-stories/module-M-<slug>/us-M.S.0-<story-slug>.md` (with all 6 mandatory sections: Spec Kit Specifications, Technical Implementation Plan, Expected Folder Architecture, Implementation Units & Agent Assignment `4.1–4.4`, Security Gateway `5.1–5.5` with global compliance, and Validation Gates & Acceptance Sign-Off).
    - Ensure every unit obeys **Pure Deliverable Production Only** (zero validation-only units) and owns orthogonal files/modules/sections so all $K$ units run 100% in parallel.
 4. **Parallel Execution (`divide-and-conquer-orchestrator` skill)**:
    - Spawn the **Module Leader**, which immediately spawns parallel **User Story Leaders**, which immediately spawn all **$K$ Unit Implementers** in parallel inside `.worktrees/`.
